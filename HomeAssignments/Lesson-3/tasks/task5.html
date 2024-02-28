@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 5</h1>
+	<p>
+		5.	З клавіатури вводиться назва категорії водія (А-мотоцикл, В-легковий автомобіль, С-вантажний автомобіль). Вивести на екран назву транспортного засобу, яким він може керувати.
+	</p>
+	<script>
+		
+			let driveCategory = prompt('Введіть назву категорії')
+			let result
+			switch (driveCategory) {
+				case 'а':
+				case 'a':
+				result='Мотоцикл'
+				break;
+				case 'b':
+				case 'б':
+				result='Легковий авто'
+				break;
+				case 'c':
+				case 'с':
+				result='Вантажний автомобіль'
+				break;
+
+				default:
+				result='Отримайте посвідчення водія'
+
+				break;
+			}
+			document.write(`${result}`)
+		
+	</script>
+</body>
+
+</html>
