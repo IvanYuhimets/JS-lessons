@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 1</h1>
+	<p>
+		З клавіатури вводитяться числа поки не буде введено 0. Знайти суму чисел.
+	</p>
+	<script>
+		let sum = 0
+		let userNum = 0
+		do {
+			userNum = parseFloat(prompt('введіть число'))
+			sum += userNum
+			if (isNaN(userNum))
+				alert('введіть коректне число')
+
+		} while (userNum !== 0);
+		document.write(`сума = ${sum}`)
+	</script>
+</body>
+
+</html>

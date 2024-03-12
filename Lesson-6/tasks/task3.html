@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 3</h1>
+	<p>
+		4.1. З клавіатури вводяться два числа N i M (N менше за M)
+		Виведення завершити коли число справа стане меншим за число зліва.</p>
+	<script>
+		let firstNum = parseInt(prompt('first num'))
+		let secondNum = parseInt(prompt('second num'))
+		if (firstNum > secondNum) {
+			let temp = firstNum
+			firstNum = secondNum
+			secondNum = temp
+		}
+		do {
+			firstNum++
+			secondNum--
+			document.write(` ${firstNum} ${secondNum} <br>`)
+		} while (firstNum <= secondNum);
+
+
+
+
+	</script>
+</body>
+
+</html>

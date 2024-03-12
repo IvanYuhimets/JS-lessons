@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 2</h1>
+	<p>З клавіатури вводиться початкове знчення суми. Поки сума є меншою за 100 додавати до неї числа, які вводяться з
+		клавіатури</p>
+	<script>
+		let total = 0
+		let userNum = 0
+		const initialSum = parseFloat(prompt('введіть початкове число'))
+		total += initialSum
+		do {
+			userNum = parseFloat(prompt('введіть число'))
+			if (isNaN(userNum))
+				alert('введіть коректне число')
+			if (userNum !== 0)
+				total += userNum
+		} while (total < 100);
+		document.write(`сума = ${total}`)
+	</script>
+</body>
+
+</html>
