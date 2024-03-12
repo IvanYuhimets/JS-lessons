@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Додаткова задача 2</h1>
+	<p>
+		2. З клавіатури вводиться розмір заробітної плати та розмір прожиткового мінімуму. Визначити розмір соціальної
+		допомоги (ввжаємо, що заробітна плата є меншою).
+	</p>
+	<script>
+		{
+			let reward = parseInt(prompt("Введіть сумму заробітної плати"))
+			let costOfLiving = parseInt(prompt("Введіть сумму прожиткового мінімуму"))
+			if (isNaN(reward) || reward >= costOfLiving) {
+				alert('Будь ласка, введіть суму заробітної плати, що менша за прожитковий мінімум!')
+			} else {
+				let socialAssistance = costOfLiving - reward
+				document.write(`Сума соціальної допомоги складає = ${socialAssistance}`)
+			}
+		}
+	</script>
+</body>
+
+</html>
