@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 2</h1>
+	<p>Створити функцію, яка за номером дня дозволяє з’ясувати чи є цей день робочим.</p>
+	<script>
+		let userNumDay = parseInt(prompt('enter the number of day from 1 to 7'))
+		function dayWorkOrOff(userAnswer) {
+			if (userNumDay >= 1 && userNumDay <= 5)
+				return 'The working day'
+
+			else if (userNumDay >= 6 && userNumDay <= 7)
+
+				return 'Day off'
+
+			else {
+				return ' ERROR - enter the correct number of day from 1 to 7'
+
+			}
+
+		}
+		let a = dayWorkOrOff(userNumDay)
+		document.write(`${a}`)
+	</script>
+</body>
+
+</html>

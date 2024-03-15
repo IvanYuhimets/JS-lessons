@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 4</h1>
+	<p>
+		Створити окремі функції, які переводять:
+		1) Сантиметри у дюйми;
+		2) Кілограми у фунти;
+		3) Кілометри у милі.
+	</p>
+	<script>
+		function getCentimeterToInch(num) {
+			let inch = 0.3937
+			return num / inch
+		}
+		let a = getCentimeterToInch(100)
+		document.write(`100 centimeter to inch = ${a.toFixed(2)} <br>`)
+		//----------------------------------------------------
+		function getKilogramToPound(num) {
+			let pound = 2.2046
+			return num * pound
+		}
+		let b = getKilogramToPound(20)
+		document.write(`20 kilogram to pound = ${b.toFixed(2)} <br>`)
+		//----------------------------------------------------
+		function getKilometerToMile(num) {
+			let mile = 0.62137
+			return num * mile
+		}
+		let c = getKilometerToMile(27)
+		document.write(`27 kilometer to mile = ${c.toFixed(2)}<br> `)
+	</script>
+</body>
+
+</html>

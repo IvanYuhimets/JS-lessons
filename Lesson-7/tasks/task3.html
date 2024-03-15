@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 3</h1>
+	<p>
+		Створити окремі функції, які для 4 чисел знаходять:
+		1) суму;
+		2) добуток;
+		3) середнє арифметичне;
+		4) мінімальне значення.
+	</p>
+	<script>
+		function sumNumbers(num1, num2, num3, num4) {
+			return num1 + num2 + num3 + num4
+		}
+		let a = sumNumbers(5, 10, 7, 3)
+		document.write(`summ numbers: 5, 10, 7, 3 : ${a} <br>`)
+
+		function productNumbers(num1, num2, num3, num4) {
+			return num1 * num2 * num3 * num4
+		}
+		let b = productNumbers(5, 10, 7, 3)
+		document.write(`product numbers: 5, 10, 7, 3 : ${b}<br> `)
+
+		function arithmeticMeanNumbers(num1, num2, num3, num4) {
+			return (num1 + num2 + num3 + num4) / 4
+		}
+		let c = arithmeticMeanNumbers(5, 10, 7, 3)
+		document.write(`arithmetic mean numbers: 5, 10, 7, 3 : ${c} <br>`)
+
+		function minNumbers(num1, num2, num3, num4) {
+			let minFloor = num1
+			if (num2 < minFloor)
+				minFloor = num2
+			if (num3 < minFloor)
+				minFloor = num3
+			if (num4 < minFloor)
+				minFloor = num4
+
+			return minFloor
+		}
+		let d = minNumbers(5, 10, 7, 3)
+		document.write(`min  numbers: 5, 10, 7, 3 : ${d} <br>`)
+
+	</script>
+</body>
+
+</html>
