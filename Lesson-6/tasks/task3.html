@@ -20,11 +20,11 @@
 			firstNum = secondNum
 			secondNum = temp
 		}
-		do {
+		while (firstNum <= secondNum) {
+			document.write(` ${firstNum} ${secondNum} <br>`)
 			firstNum++
 			secondNum--
-			document.write(` ${firstNum} ${secondNum} <br>`)
-		} while (firstNum <= secondNum);
+		}
 
 
 
