@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 3</h1>
+	<p>
+		Дано послідовність оцінок учня. Підрахувати кількість:
+		1) двійок
+		2) кількість хороших оцінок (добре, відмінно);
+		3) кількість оцінок, які нижче середнього
+
+	</p>
+	<script>
+
+		function searchScoreOfTwo(scoresList) {
+			let count = 0
+			for (let i = 0; i < scoresList.length; i++) {
+				if (scoresList[i] === 2) {
+					count++
+				}
+
+			}
+			return count
+		}
+
+		function searchGreatScore(scoresList) {
+			let greatScore = 0
+			for (let i = 0; i < scoresList.length; i++) {
+				if (scoresList[i] >= 4)
+					greatScore++
+			}
+			return greatScore
+		}
+
+		function searchScoreAverage(scoresList) {
+			let count = 0
+			let summ = 0
+			for (let i = 0; i < scoresList.length; i++) {
+				summ += scoresList[i]
+				count++
+			}
+			return summ / count
+		}
+		function searchScoreBelowAverage(searchScoreAverage, ...scoresList) {
+			let numbers = 0
+			for (let i = 0; i < scoresList.length; i++) {
+				if (scoresList[i] < searchScoreAverage)
+					numbers++
+			}
+			return numbers
+		}
+
+		let scoresList = [4, 5, 4, 5, 4, 3, 5, 4, 5, 2, 4, 3]
+
+		let average = searchScoreAverage(scoresList)
+
+		let a = searchScoreBelowAverage(average, ...scoresList)
+
+		let b = searchScoreOfTwo(scoresList)
+		let c = searchGreatScore(scoresList)
+		document.write(`двійок = ${b}<br>
+		кількість хороших оцінок (добре, відмінно) = ${c}<br>
+		кількість оцінок, які нижче середнього= ${a}<br>
+		в цьому масиві = ${scoresList}
+		`)
+
+
+
+
+
+	</script>
+</body>
+
+</html>

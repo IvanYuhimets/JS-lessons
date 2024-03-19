@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 5</h1>
+	<p>
+		Дано послідовність цін товарів та назв (у окремих масивах). Вивести на екран ті, які може собі дозволити
+		користувач (кількість грошей задається). </p>
+	<script>
+		let productsPrices = [560, 20, 60, 31, 450]
+		let productsTitles = ['cheese', 'olives', 'juice', 'bread', 'fish']
+		let userMoney = parseFloat(prompt('enter how much monye you have?'))
+
+		function userCanBuy(productsPrices, productsTitles, userMoney) {
+			let userProductsBasket = []
+			for (let i = 0; i < productsPrices.length; i++) {
+				if (userMoney >= productsPrices[i]) {
+					userProductsBasket.push(productsTitles[i])
+				}
+			}
+			return userProductsBasket
+		}
+		let launchFunc = userCanBuy(productsPrices, productsTitles, userMoney)
+		if (launchFunc.length === 0) {
+			document.write('insufficient funds')
+		} else
+			document.write(`you can buy these products = ${launchFunc}`)
+
+
+
+	</script>
+</body>
+
+</html>

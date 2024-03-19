@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 2</h1>
+	<p>Дано масив імен учнів. З’ясувати скільки разів зустрічається ім’я «Іван».</p>
+	<script>
+		let pupilsName = ['Ivan', 'Ana', 'Tom', 'Maria', 'Ivan', 'Aleks', 'Inna', 'John', 'Arnold', 'Ivan']
+		function getSearchName(pupilsName) {
+			const searchName = 'Ivan'
+			let count = 0
+			for (let i = 0; i < pupilsName.length; i++) {
+				if (pupilsName[i] === searchName)
+					count++
+
+			}
+			return count
+		}
+		let a = getSearchName(pupilsName)
+		document.write(`count names 'Ivan' = ${a}, from pupils name =${pupilsName}`)
+	</script>
+</body>
+
+</html>

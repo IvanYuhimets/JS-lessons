@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 4</h1>
+	<p>
+		Дано послідовність платіжок протягом року. Знайти сумарну кількість грошей за:
+		1) за весь рік;
+		2) у першій половині року;
+		3) у другій половині року;
+		4) за літо;
+		5) за ІІ квартал;
+		6) за парні місяці (з парними номерами);
+		7) за місяці, які є початковими у сезоні
+
+	</p>
+	<script>
+		let paymentsList = [1670, 1230, 1320, 1650, 1210, 3450, 3355, 1234, 1245, 1234, 2222, 3453,]
+		function getPaySummPerRange(paymentsList, startMonth, endMonth, step = 1) {
+			let summ = 0
+			for (let i = startMonth - 1; i < endMonth; i += step) {
+				summ += paymentsList[i]
+			}
+			return summ
+		}
+
+		let summPerYear = getPaySummPerRange(paymentsList, 1, 12)
+		let summPerFirstHalfYear = getPaySummPerRange(paymentsList, 1, 6)
+		let summForSecondHalfYear = getPaySummPerRange(paymentsList, 7, 12)
+		let summForSummerMonth = getPaySummPerRange(paymentsList, 6, 8)
+		let summForSecondQuarterOfYear = getPaySummPerRange(paymentsList, 4, 6)
+		let summForEvenMoths = getPaySummPerRange(paymentsList, 2, 12, 2)
+		let summForSeasonsStartMonth = getPaySummPerRange(paymentsList, 3, 12, 3)
+		document.write(`дано масив ${paymentsList}<br>  
+		Сумма: 
+		1)	за весь рік ${summPerYear} <br>
+		2)	у першій половині року ${summPerFirstHalfYear} <br>
+		3)	у другій половині року ${summForSecondHalfYear} <br>
+		4)	за літо ${summForSummerMonth} <br>
+		5)	за ІІ квартал ${summForSecondQuarterOfYear}<br>
+		6)	за парні місяці ${summForEvenMoths}<br>
+		7)	за місяці, які є початковими у сезоні ${summForSeasonsStartMonth}
+		`)
+	</script>
+</body>
+
+</html>
