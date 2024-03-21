@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 5</h1>
+	<p>
+		Дано масив номерів авто. Сформувати новий масив тих, які починаються на «А» </p>
+	<script>
+		const carNumbers = ["AX4893ВО", "BT0231КІ", "CM1274АЕ", "EO5678НН", "KH9012РЕ", "MB3456АВ", "OA7890СВ", "PP1234ЕО", "TC5678АН", "XI9012ВТ", "AA0234КІ", "BB1274АЕ", "CC5678НН", "EE9012РЕ", "KK3456АВ", "AM7890СВ", "OO1234ЕО", "TT5678АН", "XX9012ВТ"]
+
+		let newArrNumbers = []
+		for (const item of carNumbers) {
+			if (item[0] === "A")
+				newArrNumbers.push(item)
+		}
+		document.write(newArrNumbers + " за допомогою for of" + "<br>")
+		console.log(newArrNumbers)
+		//===============================
+
+
+		let newArrNumbersFor = []
+		for (let i = 0; i < carNumbers.length; i++) {
+			if (carNumbers[i][0] === "A")
+				newArrNumbersFor.push(carNumbers[i])
+		}
+		document.write(newArrNumbersFor + " за допомогою for")
+		console.log(newArrNumbersFor)
+
+
+	</script>
+</body>
+
+</html>
