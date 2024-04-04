@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 3</h1>
+	<p>
+		Морський бій. Випадковим чином на двовимірному полі розміром 6*6 розташовується 5 кораблів. Користувач
+		стріляє вказуючи координати. Гра продовжується поки не потоплено усі кораблі або у користувача не закінчаться
+		снаряди.
+
+	</p>
+	<script>
+
+		function generatePlaceGame(rowsNum = 6, colsNum = 6, shipsNum = 5) {
+			// створили таблицю заповнену нулями
+			let placeGame = []
+			for (let rowIndex = 0; rowIndex < rowsNum; rowIndex++) {
+				let row = new Array(colsNum).fill(0);
+				placeGame.push(row)
+			}
+			// випадковим чином розмістили кораблі в таблиці (записавши туди "1")
+			for (let shipIndex = 0; shipIndex < shipsNum;) {
+				let randPlaceInRow = Math.floor(Math.random() * rowsNum)
+				let randPlaceInCol = Math.floor(Math.random() * colsNum)
+				// перевіряємо чи клітинка не зайнята (чи немає там "1")
+				if (placeGame[randPlaceInRow][randPlaceInCol] !== 1) {
+					placeGame[randPlaceInRow][randPlaceInCol] = (1)
+					// ставимо корабель збільшуючи кількість на "1"
+					shipIndex++
+				}
+			}
+			return placeGame
+		}
+
+		function game(shipsNum, missleNum, placeGame) {
+			while (shipsNum > 0 && missleNum > 0) {
+				let row = parseInt(prompt('Enter row')) - 1
+				let col = parseInt(prompt('Enter col')) - 1
+				if (placeGame[row][col] === 1) {
+					alert('You hit ship')
+					shipsNum--
+					placeGame[row][col] = 0
+				}
+				else alert('You miss')
+				missleNum--
+			}
+			if (shipsNum === 0)
+				return "You win"
+			else "You lose"
+		}
+
+		function startGame(shipsNum = 5, missleNum = 10, rowsNum = 6, colsNum = 6) {
+			let genGamePlace = generatePlaceGame(rowsNum, colsNum, shipsNum)
+			console.log(genGamePlace)
+			let result = game(shipsNum, missleNum, genGamePlace)
+			alert(result)
+		}
+		startGame()
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 1</h1>
+	<p>
+
+
+	</p>
+	<script>
+		// З клавіатури вводяться числа до тих пір, поки послідовність є зростаючою або спадною.
+		// my homework
+		// function getSequence() {
+		// 	let firstNum = parseFloat(prompt('Enter first num'))
+		// 	let secondNum = parseFloat(prompt('Enter second num'))
+		// 	let diference = secondNum - firstNum
+		// 	let newArr = [firstNum, secondNum]
+		// 	do {
+		// 		let number = parseFloat(prompt('Enter number'))
+		// 		let newDiference = number - newArr.at(-1)
+		// 		if (newDiference * diference > 0) {
+		// 			newArr.push(number)
+		// 		} else
+		// 			break
+		// 	} while (true)
+		// 	return newArr
+		// }
+
+		// let launchFunc = getSequence()
+		// document.write(launchFunc)
+		//=============================================
+		// Знайти суму цифр числа, що знаходяться між першою цифрою 7 і останньою цифрою 7
+		// (у числі є всього дві цифри 7, наприклад: 2679328712)
+		// function getSumBetweenSeven(number) {
+		// 	let digit
+		// 	do {
+		// 		digit = number % 10
+		// 		number = Math.floor(number / 10)
+		// 	} while (digit !== 7)
+		// 	let summ = 0
+		// 	do {
+		// 		digit = number % 10
+		// 		number = Math.floor(number / 10)
+		// 		if (digit !== 7)
+		// 			summ += digit
+
+		// 	} while (digit !== 7);
+		// 	return summ
+		// }
+
+		// let launchFunc = getSumBetweenSeven(2679328712)
+		// document.write(launchFunc)
+		//=============================================
+		// Комп’ютер загадує два випадкових числа від 1 до 10. Вгадати обидва числа шляхом введеня можливих варіантів. В кінці вивести кількість спроб користувача.
+		// const firstNum = 1 + Math.floor(Math.random() * 10)
+		// const secondNum = 1 + Math.floor(Math.random() * 10)
+		// let firstNumFound = false
+		// let secondNumFound = false
+		// let count = 0
+		// alert(`first = ${firstNum}<br> second = ${secondNum}`)
+
+		// do {
+		// 	let userNum = parseInt(prompt('Enter number'))
+		// 	if (userNum === firstNum)
+		// 		firstNumFound = true
+		// 	// alert('you found first num')
+
+		// 	else if
+		// 		(userNum === secondNum)
+		// 		secondNumFound = true
+		// 	// alert('you found second num')
+
+		// 	count++
+
+		// } while (!firstNumFound || !secondNumFound);
+		// document.write(`you are win count = ${count}`)
+		//=============================================
+		// Багатовимірні масиви
+		// let arr = [
+		// 	[1, 2, -9, 9, 2, 10], //0
+		// 	[3, -9, -5, 11, 18, 158], //1
+		// 	[4, -8, 9, 10, 11, 448, 88], //2
+		// ]
+		// метод FOR
+		// let positiveCount = 0
+
+		// for (let rowIndex = 0; rowIndex < arr.length; rowIndex++) {
+		// 	for (let colIndex = 0; colIndex < arr[rowIndex].length; colIndex++) {
+		// 		if (arr[rowIndex][colIndex] > 0) positiveCount++
+		// 	}
+		// }
+		// document.write(`${positiveCount}`)
+		// метод FOR OF
+		// let positiveCount = 0
+		// for (const row of arr) {
+		// 	for (const item of row) {
+		// 		if (item > 0)
+		// 			positiveCount++
+		// 	}
+		// }
+		// document.write(`${positiveCount}`)
+
+		// ===========================
+		//Задача. Дано прибуток магазину за К тижнів. Знайти загальний прибуток
+		let incomes = [
+			// 0  1  2  3  4  5  6
+			[1, 2, 5, 2, 1, 2, 9], // 0
+			[1, 2, 1, 2, 1, 2, 9], // 1
+			[1, 1, 5, 2, 1, 2, 9], // 2
+			[1, 6, 5, 2, 1, 2, 9], // 3
+			[1, 2, 23, 2, 1, 2, 9], // 4
+			[0, 1, 5, 2, 1, 2, 9], // 5
+			[1, 1, 54, 21, 1, 2, 9], // 6
+			[14, 11, 54, 21, 1, 2, 9], // 7
+		]
+		//1) ------Загальний прибуток
+		// let profit = 0
+		// for (const row of incomes) {
+		// 	for (const el of row) {
+		// 		profit += el
+		// 	}
+		// }
+		// document.write(`profit = ${profit}`)
+		// 2) --- Сума за робочі дні
+		// let profit = 0
+		// for (const row of incomes) {
+		// 	for (let day = 0; day < 5; day++) {
+		// 		profit += row[day]
+		// 	}
+		// }
+		// document.write(`profit = ${profit}`)
+		// 3) за вихідні за тижні з непарними індексами
+		// let profit = 0
+		// for (let rowIndex = 0; rowIndex < incomes.length; rowIndex++) {
+		// 	if (rowIndex % 2 !== 0) {
+		// 		for (let day = 5; day < 7; day++) {
+		// 			profit += incomes[rowIndex][day]
+		// 		}
+		// 	}
+		// }
+		// document.write(`profit = ${profit}`)
+
+		//========================================================================
+		// Задача. Дано кількість відвідувачів кафе протягом року (для кожного місяця за кожен заокруглений тиждень - 4).
+		let visitors = [
+			[
+				23, 17, 30, 26, 10, 14, 29, 16, 27, 21, 19, 28, 15, 22, 24, 18, 20,
+				13, 25, 12, 11, 31, 32, 33, 34, 35, 36, 37,
+			],
+			[
+				38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54,
+				55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65,
+			],
+			[
+				66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82,
+				83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93,
+			],
+			[
+				23, 17, 30, 26, 10, 14, 29, 16, 27, 21, 19, 28, 15, 22, 24, 18, 20,
+				13, 25, 12, 11, 31, 32, 33, 34, 35, 36, 37,
+			],
+			[
+				38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54,
+				55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65,
+			],
+			[
+				66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82,
+				83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93,
+			],
+			[
+				23, 17, 30, 26, 10, 14, 29, 16, 27, 21, 19, 28, 15, 22, 24, 18, 20,
+				13, 25, 12, 11, 31, 32, 33, 34, 35, 36, 37,
+			],
+			[
+				38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54,
+				55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65,
+			],
+			[
+				66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82,
+				83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93,
+			],
+			[
+				23, 17, 30, 26, 10, 14, 29, 16, 27, 21, 19, 28, 15, 22, 24, 18, 20,
+				13, 25, 12, 11, 31, 32, 33, 34, 35, 36, 37,
+			],
+			[
+				38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54,
+				55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65,
+			],
+			[
+				66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82,
+				83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93,
+			],
+		]
+		// 1) загальну кількість відвідувачів;
+		// варіант №1
+		// let summ = 0
+		// for (let rowIndex = 0; rowIndex < visitors.length; rowIndex++) {
+		// 	for (let colIndex = 0; colIndex < visitors[rowIndex].length; colIndex++) {
+		// 		summ += visitors[rowIndex][colIndex]
+		// 	}
+		// }
+		// document.write(`all visitors = ${summ}`)
+		// варіант №2
+		// let summ = 0
+		// for (const rowIndex of visitors) {
+		// 	for (const colIndex of rowIndex) {
+		// 		summ += colIndex
+		// 	}
+		// }
+		// document.write(`all visitors = ${summ}`)
+		// варіант №3 reduce
+
+		// let summ = visitors.reduce((prevMonthSumm, month) => prevMonthSumm + month.reduce((prevSumm, day) => prevSumm + day, 0), 0)
+		// document.write(`all visitors = ${summ}`)
+
+
+		// 2) кількість відвідувачів за літо (5,6,7)
+		// let summ = 0
+		// for (let monthInd = 5; monthInd < 8; monthInd++) {
+		// 	for (let dayInd = 0; dayInd < visitors[monthInd].length; dayInd++) {
+		// 		summ += visitors[monthInd][dayInd]
+		// 	}
+		// }
+		// document.write(`summ for summer month = ${summ}`)
+
+		// 3) кількість відвідувачів за друге півріччя (місяці від 5 і до кінця)
+
+		// let summ = 0
+		// for (let monthInd = ; monthInd < visitors.length; monthInd++) {
+		// 	for (let dayInd = 0; dayInd < visitors[monthInd].length; dayInd++) {
+		// 		summ += visitors[monthInd][dayInd]
+		// 	}
+		// }
+		// document.write(`summ for summer month = ${summ}`)
+
+
+	</script>
+</body>
+
+</html>
