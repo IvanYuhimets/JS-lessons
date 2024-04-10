@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 2</h1>
+	<p>Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів та порівнянь чисел під час сортування
+		змішуванням.</p>
+	<script>
+		let numbers = [63, 7, 29, 75, 46, 20, 95, 34, 14, 68, 62, 27, 2, 55, 90, 82, 48, 47, 71, 78, 49, 36, 56, 97, 86, 51, 33, 37, 93, 25]
+		let leftIndex = 0
+		let rightIndex = numbers.length - 1
+		let countChanges = 0
+		let countСomparison = 0
+		let changes = true
+		while (leftIndex < rightIndex) {
+			changes = false
+			for (let i = leftIndex + 1; i <= rightIndex; i++) {
+				if (numbers[i - 1] > numbers[i]) {
+					let temp = numbers[i - 1]
+					numbers[i - 1] = numbers[i]
+					numbers[i] = temp
+					changes = true
+					countChanges++
+					countСomparison++
+				}
+				countСomparison++
+			}
+			rightIndex--
+			if (changes === false) break
+			changes = false
+			for (let j = rightIndex; j > leftIndex; j--) {
+				if (numbers[j - 1] > numbers[j]) {
+					let temp = numbers[j - 1]
+					numbers[j - 1] = numbers[j]
+					numbers[j] = temp
+					changes = true
+					countChanges++
+					countСomparison++
+				}
+				countСomparison++
+			}
+			leftIndex++
+			if (changes === false) break
+			// document.write(JSON.stringify(numbers) + `<br>`)
+		}
+		document.write(`${numbers} changes = ${countChanges} comparison = ${countСomparison}`)
+	</script>
+</body>
+
+</html>

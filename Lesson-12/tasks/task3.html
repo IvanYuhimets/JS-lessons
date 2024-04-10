@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 3</h1>
+	<p>
+		Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів та порівнянь чисел під час сортування
+		включеннями.
+
+	</p>
+	<script>
+		let numbers = [63, 7, 29, 75, 46, 20, 95, 34, 14, 68, 62, 27, 2, 55, 90, 82, 48, 47, 71, 78, 49, 36, 56, 97, 86, 51, 33, 37, 93, 25]
+		let count = 0
+		let swithes = 0
+		for (let i = 0; i < numbers.length; i++) {
+			let curElement = numbers[i]
+			let j = i - 1
+			while (j >= 0 && numbers[j] > curElement) {
+				count++
+				numbers[j + 1] = numbers[j]
+				j = j - 1
+			}
+			numbers[j + 1] = curElement
+			swithes++
+			// document.write(JSON.stringify(numbers) + `<br>`)
+		}
+		document.write(`${numbers} порівняння = ${count} заміна = ${swithes}`)
+
+
+
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 1</h1>
+	<p>
+		Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів та порівнянь чисел під час сортування
+		бульбашкою
+	</p>
+	<script>
+		let numbers = [63, 7, 29, 75, 46, 20, 95, 34, 14, 68, 62, 27, 2, 55, 90, 82, 48, 47, 71, 78, 49, 36, 56, 97, 86, 51, 33, 37, 93, 25]
+		let count = 0, swithes = 0
+		function bubbleSort(arr) {
+			let changed
+			do {
+				changed = false
+				for (let i = 1; i < arr.length; i++) {
+					if (arr[i - 1] > arr[i]) {
+						let temp = arr[i - 1]
+						arr[i - 1] = arr[i]
+						arr[i] = temp
+						changed = true
+						swithes++
+						count++
+					}
+					count++
+				}
+
+			} while (changed);
+			return arr
+		}
+		let funcStart = bubbleSort(numbers)
+		document.write(JSON.stringify(funcStart) + ` <br> changes = ${count} swiches = ${swithes}`)
+	</script>
+</body>
+
+</html>
