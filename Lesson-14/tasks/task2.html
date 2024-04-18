@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 2</h1>
+	<p>Задача 2. Розробити функцію, у яку передають об’єкт (день, місяць, рік). Визначити, який буде рік через N місяців.
+	</p>
+	<script>
+		let obj = {
+			day: 24,
+			month: 10,
+			year: 1988,
+		}
+		function getYearPerMonth(obj, k) {
+			return ((obj.month - 1 + k) % 12) + 1
+		}
+		let result = getYearPerMonth(obj, 10)
+		document.write(result)
+	</script>
+</body>
+
+</html>

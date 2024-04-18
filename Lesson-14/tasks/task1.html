@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 1</h1>
+	<p>
+		Задача 1. Описати масив об’єктів – сайтів розроблених компанією з такими властивостями
+		----- Властивості ------
+		- назва компанії на час розробки (назву періодично змінюють)
+		- власник компанії
+		- споснсори (масив спонсорів)
+		* прізвище спонсора
+		* ім’я спонсора
+		* сума вкладень спонсора
+		- рік випуску
+		- вартість сайту
+		Знайти:
+	<p>1) загальну вартість усіх сайтів</p>
+	<p>2) кількість сайтів, що було зроблено між 2000 та 2009 рр.</p>
+	<p>3) кількість сайтів, де сума спонсорських вкладень була більшою за 100000</p>
+	<p>4) створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)</p>
+	<p>5) знайти рік, коли прибуток був найбільшим</p>
+	<p>6) упорядкувати список за спаданням прибутку</p>
+	<p>7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000</p>
+
+	</p>
+	<script>
+		let arrSiteBuid = [
+			{
+				nameOfCompany: "Web deW",
+				companyOwner: "Yuchimec Ivan",
+				sponsors: [
+					{
+						lastName: "Johnson",
+						firstName: "Boris",
+						investment: 5000,
+					},
+					{
+						lastName: "Bredley",
+						firstName: "Cooper",
+						investment: 4000,
+					},
+				],
+				graduationYear: 2008,
+				siteCost: 9000,
+			},
+
+			{
+				nameOfCompany: "Crysis co.",
+				companyOwner: "Yuchimec Ivan",
+				sponsors: [
+					{
+						lastName: "Burton",
+						firstName: "Capt",
+						investment: 20000,
+					},
+					{
+						lastName: "Crouse",
+						firstName: "Tom",
+						investment: 35000,
+					},
+				],
+				graduationYear: 2005,
+				siteCost: 55000,
+			},
+
+			{
+				nameOfCompany: "The best studio",
+				companyOwner: "Yuchimec Ivan",
+				sponsors: [
+					{
+						lastName: "Smith",
+						firstName: "Will",
+						investment: 20500,
+					},
+					{
+						lastName: "Donowan",
+						firstName: "Arnold",
+						investment: 84300,
+					},
+				],
+				graduationYear: 2020,
+				siteCost: 94800,
+			},
+		]
+		document.write(' Дано такий масив ' + JSON.stringify(arrSiteBuid) + '<br>')
+		// console.log(arrSiteBuid)
+		// 1)
+		let summPriseSites = arrSiteBuid.reduce(
+			(prevSumm, element) => prevSumm + element.siteCost,
+			0
+		)
+		document.write("1) total summ all sites = " + summPriseSites + "<br>")
+		// 2)
+		let countSite = arrSiteBuid.reduce(
+			(prevCount, element) =>
+				element.graduationYear > 2000 && element.graduationYear < 2009
+					? prevCount += 1
+					: prevCount,
+			0
+		)
+		document.write("2) summ sites from 2000 to 2009 yy = " + countSite + "<br>")
+
+		// 3)
+
+		let count = 0
+		for (const company of arrSiteBuid) {
+			let sponsorsInvestmentThan10000 = 0
+			for (const sponsor of company.sponsors) {
+				sponsorsInvestmentThan10000 += sponsor.investment
+				if (sponsorsInvestmentThan10000 > 100000) {
+					count++
+				}
+			}
+		}
+		document.write("3) summ invesment than 100000 = " + count + "<br>")
+
+		// 4)============================== приклад
+		// let namesNumberObject = {}
+		// for (const name of usersNames) {
+		// 	if (name in namesNumberObject === false) namesNumberObject[name] = 1
+		// 	else namesNumberObject[name] += 1
+		// }
+		// console.log(namesNumberObject)
+		// for (const key in namesNumberObject) {
+		// 	document.write(`${key} = ${namesNumberObject[key]} <br>`)
+		// }
+		// ================================================
+		let namesArr = []
+		for (const company of arrSiteBuid) {
+			for (const name of company.sponsors) {
+				namesArr.push(name.firstName, name.lastName)
+			}
+		}
+		document.write('4) List of sponsors = ' + namesArr + "<br>")
+		document.write('результати з вирішенням 5-7 завдань у консолі <br>')
+
+
+		// 5)
+		let maxProfitYear = arrSiteBuid.reduce(
+			(maxYear, element) =>
+				element.siteCost > maxYear.siteCost ? element : maxYear,
+			{ siteCost: 0 }
+		)
+		console.log(maxProfitYear)
+
+		// 6)
+		arrSiteBuid.sort((a, b) => b.siteCost - a.siteCost)
+		console.log(arrSiteBuid)
+		// 7)
+		let objLow10000 = arrSiteBuid.filter((site) => site.siteCost <= 10000)
+		let objBig10000 = arrSiteBuid.filter((site) => site.siteCost > 10000)
+		console.log(objLow10000)
+		console.log(objBig10000)
+	</script>
+</body>
+
+</html>

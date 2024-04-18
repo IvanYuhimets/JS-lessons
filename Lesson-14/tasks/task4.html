@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 4</h1>
+	<p>
+		Для розглянутих методів сортування спробувати вивести етапи сортування шляхом виведення відповідних таблиць за
+		зразком. Всі розв'язання виведені в 'console.log()'
+	</p>
+	<script>
+		let numbers = [63, 95, 7, 29, 75, 46, 20]
+		function bubbleSort(arr) {
+			let changed
+			do {
+				changed = false
+				for (let i = 1; i < arr.length; i++) {
+					if (arr[i - 1] > arr[i]) {
+						let temp = arr[i - 1]
+						arr[i - 1] = arr[i]
+						arr[i] = temp
+						changed = true
+						console.log('Bubble sort = ' + JSON.stringify(numbers))
+					}
+				}
+			} while (changed);
+			return arr
+		}
+		let funcStart = bubbleSort(numbers)
+
+
+
+		// coctail sort======================
+		let num = [63, 95, 7, 29, 75, 46, 20]
+
+		let leftIndex = 0
+		let rightIndex = numbers.length - 1
+		function coctailSort(array) {
+			let changes = true
+			while (leftIndex < rightIndex) {
+				changes = false
+				for (let i = leftIndex + 1; i <= rightIndex; i++) {
+					if (array[i - 1] > array[i]) {
+						let temp = array[i - 1]
+						array[i - 1] = array[i]
+						array[i] = temp
+						changes = true
+					}
+
+				}
+				console.log('coctail sort = ' + JSON.stringify(array))
+				rightIndex--
+				if (changes === false) break
+				changes = false
+				for (let j = rightIndex; j > leftIndex; j--) {
+					if (array[j - 1] > array[j]) {
+						let temp = array[j - 1]
+						array[j - 1] = array[j]
+						array[j] = temp
+						changes = true
+					}
+				}
+				leftIndex++
+				if (changes === false) break
+				console.log('coctail sort = ' + JSON.stringify(array))
+			}
+			return array
+		}
+		let launchFunc = coctailSort(num)
+
+
+		// sorting by inclusions
+
+		let num1 = [63, 95, 7, 29, 75, 46, 20]
+
+		function sortByInclusions(arr1) {
+
+
+			for (let i = 0; i < arr1.length; i++) {
+				let curElement = arr1[i]
+				let j = i - 1
+				while (j >= 0 && arr1[j] > curElement) {
+
+					arr1[j + 1] = arr1[j]
+					j = j - 1
+				}
+				arr1[j + 1] = curElement
+
+				console.log('sorting by inclusions = ' + JSON.stringify(arr1))
+
+			}
+			return arr1
+		}
+		let getSortByInclusions = sortByInclusions(num1)
+	</script>
+</body>
+
+</html>
