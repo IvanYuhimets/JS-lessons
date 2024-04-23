@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<p>
+	<p>Задача 5. Розробити клас «Керівник танців»</p>
+	<p>Поля Масив імен хлопців</p>
+	<p>Масив імен дівчат</p>
+	<p>Методи Метод випадкового вибору імені хлопця</p>
+	<p>Метод випадкового вибору імені дівчини</p>
+	<p>Метод виведення пари для танців</p>
+	<p>Метод run , який ініціює через кожні 5 секунд виведення нової пари для танців</p>
+
+	</p>
+
+	</p>
+	<script>
+		class HeadOfDances {
+			constructor(boysNameArr, girlsNameArr) {
+				this.boysNameArr = boysNameArr
+				this.girlsNameArr = girlsNameArr
+			}
+			randomBoyChoiceName(
+				minRandNum = 0,
+				maxRandNum = this.boysNameArr.length - 1
+			) {
+				let randNUm =
+					minRandNum +
+					Math.floor(Math.random() * (maxRandNum - minRandNum + 1))
+				return this.boysNameArr[randNUm]
+			}
+			randomGirlChoiceName(
+				minRandNum = 0,
+				maxRandNum = this.girlsNameArr.length - 1
+			) {
+				let randNUm = Math.floor(
+					Math.random() * (maxRandNum - minRandNum + 1)
+				)
+				return this.girlsNameArr[randNUm]
+			}
+			viewPairForDance() {
+				document.write(
+					`${this.randomBoyChoiceName()} - ${this.randomGirlChoiceName()} <br>`
+				)
+			}
+			run() {
+				setInterval(() => {
+					this.viewPairForDance()
+				}, 5000)
+			}
+		}
+
+		let boysNameArr = ["Ivan", "Dmytro", "John", "Alexander"]
+		let girlsNameArr = ["Julya", "Kristina", "Yana", "Olesya"]
+		let getDance = new HeadOfDances(boysNameArr, girlsNameArr)
+		getDance.run()
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<p>
+	<p>Задача 4. Розробити клас Baner</p>
+	<p>Поля Масив об’єктів ( графічних зображень та посилань на сайти)</p>
+
+	<p>методи Метод випадкового вибору об’єкта (графічного зображення та посилання)</p>
+	<p>Метод виведення випадкового банера</p>
+
+	</p>
+
+	</p>
+	<script>
+		class Banner {
+			constructor(value) {
+				this.value = value
+			}
+			getRandomObject() {
+				if (this.value.length === 0) throw new Error("array is empty")
+				let randObj = Math.floor(Math.random() * this.value.length)
+				return this.value[randObj]
+			}
+			getRandBanner() {
+				return this.getRandomObject()
+			}
+		}
+		let bannerData = [
+			{
+				imgSrc: "http://surl.li/svkje",
+				link: "https://depositphotos.com/ua/photo/kharkiv-landscape-view-131011348.html",
+			},
+			{
+				imgSrc: "http://surl.li/svkkb",
+				link: "https://depositphotos.com/ua/editorial/aerial-view-of-the-mother-motherland-monument-in-kiev-537976158.html",
+			},
+			{
+				imgSrc: "http://surl.li/svkkv",
+				link: "https://depositphotos.com/ua/editorial/odessa-ukraine-2023-national-academical-opera-ballet-theater-odessa-ukraine-665952324.html",
+			},
+		]
+
+		let banner = new Banner(bannerData)
+		let randomBanner = banner.getRandBanner()
+		if (randomBanner) {
+			console.log(`Image source: ${randomBanner.imgSrc}`)
+			console.log(`Link: ${randomBanner.link}`)
+		} else {
+			console.log("No banners available.")
+		}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 3</h1>
+	<p>
+	<p>Задача 2. Створити об’єкт «Авто».</p>
+	<p>Поля(властивості) Марка</p>
+	<p>Розмір бака</p>
+	<p>Кількість наявних літрів</p>
+	<p>Кількість місць</p>
+	<p>Кількість пасажирів</p>
+	<p>Методи (дії) Заправка на вказану кількість літрів</p>
+	<p>Виведення кількості пасажирів</p>
+	<p>Додавання пасажирів</p>
+	<p>Висадка пасажирів</p>
+	</p>
+	<script>
+		let auto = {
+			brand: "Skoda",
+			tankSize: 90,
+			numLitersAvalaible: 35,
+			numSeats: 7,
+			numOfPassengers: 2,
+			getRefuelNum: function (fuelNum) {
+				if (this.tankSize < this.numLitersAvalaible + fuelNum) {
+					throw new Error("tank is overload")
+				} else {
+					this.numLitersAvalaible += fuelNum
+				}
+			},
+			getOutputPassengers: function (passenger) {
+				console.log(this.numOfPassengers)
+			},
+			getAddPassengers: function (passenger) {
+				if (this.numSeats < numOfPassengers + passenger) {
+					throw new Error("not enough seats ")
+				} else {
+					this.numOfPassengers += passenger
+				}
+			},
+			getDisembarkationPassengers: function () {
+				if (this.numOfPassengers < passenger) {
+					throw new Error("not enough passengers ")
+				} else {
+					this.numOfPassengers -= passenger
+				}
+			},
+		}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 2</h1>
+	<p>
+	<p>
+		Задача 1. Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць і 0 в іншому
+		випадку.
+	</p>
+
+	<p>Поля(властивості) Масив, у якому зберігається поле з зайцями</p>
+	<p>Методи (дії) Метод пострілу (задається позиція пострілу)</p>
+	<p>Виведення ігрового поля</p>
+
+	</p>
+	<script>
+		let shootingGallery = {
+			arr: [],
+			generateArr: function (number) {
+				for (let i = 0; i < number; i++) {
+					this.arr.push(Math.random() < 0.2 ? 1 : 0)
+				}
+			},
+			hit: function (place) {
+				if (place >= 0 && place < this.arr.length) {
+					if (this.arr[place] === 1) {
+						console.log("you hit rabbit")
+						this.arr[place] = 0
+					} else {
+						console.log("you miss")
+					}
+				}
+			},
+			visualArr: function () {
+				let cell = ""
+				for (let index = 0; index < this.arr.length; index++) {
+					cell += this.arr[index] === 1 ? "X" : "."
+					if ((index + 1) % 10 === 0) {
+						cell += "\n"
+					}
+				}
+				console.log(cell)
+			},
+		}
+		shootingGallery.generateArr(100)
+		shootingGallery.visualArr()
+		shootingGallery.hit(8)
+		shootingGallery.visualArr()
+	</script>
+</body>
+
+</html>

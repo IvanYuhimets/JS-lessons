@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		//  Задача 0
+
+		let obj1 = {
+			numbers: [10, 15, 22, 77, 53],
+			getSumm: function () {
+				return this.numbers.reduce((prevSum, element) => prevSum + element, 0)
+			},
+		}
+		let obj2 = {
+			numbers: [3, 5, 9, 2, 10],
+			getProduct: function (minNum, maxNum) {
+				return this.numbers.reduce(
+					(prevProd, element) =>
+						element > minNum && element < maxNum
+							? prevProd * element
+							: prevProd,
+					1
+				)
+			},
+		}
+		let s = obj1.getSumm.apply(obj2)
+		//   document.write(s)
+
+		let d = obj2.getProduct.apply(obj1, [10, 25]) // для передачі мін та макс використовуємо як масив чисел
+		//   document.write(d)
+
+		let c = obj1.getSumm.call(obj2)
+		//   document.write(c)
+		let e = obj2.getProduct.call(obj1, 10, 25) // для передачі мін та макс пишемо через кому
+		//   document.write(e)
+
+		//================================================
+		//   Задача 1
+		//   let shootingGallery = {
+		//     arr: [],
+		//     generateArr: function (number) {
+		//       for (let i = 0; i < number; i++) {
+		//         this.arr.push(Math.random() < 0.2 ? 1 : 0)
+		//       }
+		//     },
+		//     hit: function (place) {
+		//       if (place >= 0 && place < this.arr.length) {
+		//         if (this.arr[place] === 1) {
+		//           console.log("you hit rabbit")
+		//           this.arr[place] = 0
+		//         } else {
+		//           console.log("you miss")
+		//         }
+		//       }
+		//     },
+		//     visualArr: function () {
+		//       let cell = ""
+		//       for (let index = 0; index < this.arr.length; index++) {
+		//         cell += this.arr[index] === 1 ? "X" : "."
+		//         if ((index + 1) % 10 === 0) {
+		//           cell += "\n"
+		//         }
+		//       }
+		//       console.log(cell)
+		//     },
+		//   }
+		//   shootingGallery.generateArr(100)
+		//   shootingGallery.visualArr()
+		//   shootingGallery.hit(8)
+		//   shootingGallery.visualArr()
+		//   // задача 2==========================================
+		//   let auto = {
+		//     brand: "Skoda",
+		//     tankSize: 90,
+		//     numLitersAvalaible: 35,
+		//     numSeats: 7,
+		//     numOfPassengers: 2,
+		//     getRefuelNum: function (fuelNum) {
+		//       if (this.tankSize < this.numLitersAvalaible + fuelNum) {
+		//         throw new Error("tank is overload")
+		//       } else {
+		//         this.numLitersAvalaible += fuelNum
+		//       }
+		//     },
+		//     getOutputPassengers: function (passenger) {
+		//       console.log(this.numOfPassengers)
+		//     },
+		//     getAddPassengers: function (passenger) {
+		//       if (this.numSeats < numOfPassengers + passenger) {
+		//         throw new Error("not enough seats ")
+		//       } else {
+		//         this.numOfPassengers += passenger
+		//       }
+		//     },
+		//     getDisembarkationPassengers: function () {
+		//       if (this.numOfPassengers < passenger) {
+		//         throw new Error("not enough passengers ")
+		//       } else {
+		//         this.numOfPassengers -= passenger
+		//       }
+		//     },
+		//   }
+		//задача 3====================================
+
+		//   class MultChecker {
+		//     constructor(numberAnswer) {
+		//       ;(this.numberAnswer = numberAnswer),
+		//         (this.trueAnswer = 0),
+		//         (this.falseAnswer = 0)
+		//     }
+		//     generateExample() {
+		//       let randNUmber = Math.floor(Math.random() * 10) + 1
+		//       let userAnswer = prompt(
+		//         `Your answer = ${this.numberAnswer} * ${randNUmber}`
+		//       )
+		//       this.checkAnswer(parseInt(userAnswer), randNUmber)
+		//     }
+		//     checkAnswer(userAnswer, randNUmber) {
+		//       if (userAnswer === this.numberAnswer * randNUmber) {
+		//         console.log("True")
+		//         this.trueAnswer += 1
+		//       } else {
+		//         console.log("False")
+		//         this.falseAnswer += 1
+		//       }
+		//     }
+		//     render() {
+		//       console.log(`Number to check = ${this.numberAnswer}`),
+		//         console.log(`Correct answer = ${this.trueAnswer}`),
+		//         console.log(`Incorrect answer = ${this.falseAnswer}`)
+		//     }
+		//   }
+
+		//   let multiChecker = new MultChecker(7)
+		//   multiChecker.generateExample()
+		//   multiChecker.render()
+		//=========================================
+		// задача 4
+		class Banner {
+			constructor(value) {
+				this.value = value
+			}
+			getRandomObject() {
+				if (this.value.length === 0) throw new Error("array is empty")
+				let randObj = Math.floor(Math.random() * this.value.length)
+				return this.value[randObj]
+			}
+			getRandBanner() {
+				return this.getRandomObject()
+			}
+		}
+		let bannerData = [
+			{
+				imgSrc: "http://surl.li/svkje",
+				link: "https://depositphotos.com/ua/photo/kharkiv-landscape-view-131011348.html",
+			},
+			{
+				imgSrc: "http://surl.li/svkkb",
+				link: "https://depositphotos.com/ua/editorial/aerial-view-of-the-mother-motherland-monument-in-kiev-537976158.html",
+			},
+			{
+				imgSrc: "http://surl.li/svkkv",
+				link: "https://depositphotos.com/ua/editorial/odessa-ukraine-2023-national-academical-opera-ballet-theater-odessa-ukraine-665952324.html",
+			},
+		]
+
+		let banner = new Banner(bannerData)
+		let randomBanner = banner.getRandBanner()
+		if (randomBanner) {
+			console.log(`Image source: ${randomBanner.imgSrc}`)
+			console.log(`Link: ${randomBanner.link}`)
+		} else {
+			console.log("No banners available.")
+		}
+
+
+		//=============================
+		//   Задача 5
+
+		// class HeadOfDances {
+		// 	constructor(boysNameArr, girlsNameArr) {
+		// 		this.boysNameArr = boysNameArr
+		// 		this.girlsNameArr = girlsNameArr
+		// 	}
+		// 	randomBoyChoiceName(
+		// 		minRandNum = 0,
+		// 		maxRandNum = this.boysNameArr.length - 1
+		// 	) {
+		// 		let randNUm =
+		// 			minRandNum +
+		// 			Math.floor(Math.random() * (maxRandNum - minRandNum + 1))
+		// 		return this.boysNameArr[randNUm]
+		// 	}
+		// 	randomGirlChoiceName(
+		// 		minRandNum = 0,
+		// 		maxRandNum = this.girlsNameArr.length - 1
+		// 	) {
+		// 		let randNUm = Math.floor(
+		// 			Math.random() * (maxRandNum - minRandNum + 1)
+		// 		)
+		// 		return this.girlsNameArr[randNUm]
+		// 	}
+		// 	viewPairForDance() {
+		// 		document.write(
+		// 			`${this.randomBoyChoiceName()} - ${this.randomGirlChoiceName()} <br>`
+		// 		)
+		// 	}
+		// 	run() {
+		// 		setInterval(() => {
+		// 			this.viewPairForDance()
+		// 		}, 5000)
+		// 	}
+		// }
+
+		// let boysNameArr = ["Ivan", "Dmytro", "John", "Alexander"]
+		// let girlsNameArr = ["Julya", "Kristina", "Yana", "Olesya"]
+		// let getDance = new HeadOfDances(boysNameArr, girlsNameArr)
+		// getDance.run()
+	</script>
+</body>
+
+</html>
