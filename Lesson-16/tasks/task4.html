@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 4</h1>
+	<p>
+		. Створити клас TBankomat, який моделює роботу банкомата. Клас повинен містити поля для зберігання кількості
+		купюр кожного із номіналів від 5 до 200 гривень. Реалізувати методи знаходження максимальної та мінімальної
+		сум, які може видати банкомат, та метод зняття деякої суми.
+	<p>ЗРОБЛЕНО по відеоінструкціі з наступного урока, складнувато для мене =)</p>
+
+	</p>
+	<script>
+		class Notes {
+			constructor(initialNoteValue, initialNoteNumber) {
+				this.value = initialNoteValue
+				this.number = initialNoteNumber
+			}
+			getSumm() {
+				return this.value * this.number
+			}
+			toString() {
+				return `${this.value} - ${this.number}`
+			}
+		}
+		class TBankomat {
+			constructor(notesList) {
+				this.notesList = notesList
+			}
+			getMinSum() {
+				let minNote = this.notesList.reduce(
+					(prevNoteVal, note) =>
+						note.number > 0 && note.value < prevNoteVal
+							? note.value
+							: prevNoteVal,
+					Infinity
+				)
+				return isFinite(minNote) ? minNote : 0
+			}
+			getMaxSum() {
+				let maxSum = this.notesList.reduce(
+					(prevSum, note) => prevSum + note.getSumm,
+					0
+				)
+				return maxSum
+			}
+			// метод перевірки чи можемо видаи суму грошей
+			getPossibleNotesList(userMoney) {
+				let possibleNotes = []
+				for (let i = 0; i < this.notesList.length && userMoney > 0; i++) {
+					let note = this.notesList[i]
+					if (userMoney >= note.value && note.number > 0) {
+						let notesNum = Math.floor(userMoney / note.value)
+						let notesToGive = Math.min(notesNum, note.number)
+						possibleNotes.push({
+							note,
+							notesToGive,
+						})
+						userMoney -= notesToGive * note.value
+					}
+				}
+				if (userMoney > 0) return false
+				return possibleNotes
+			}
+			// метод зняття грошей
+			getWithdrawal(userMoney) {
+				let withdrawal = this.getPossibleNotesList(userMoney)
+				if (withdrawal) {
+					for (const { note, notesToGive } of withdrawal) {
+						document.write(`${note.value} - ${notesToGive} <br>`)
+						note.number -= notesToGive
+					}
+					document.write("заберіть ваші гроші")
+				} else document.write("такої суми немає ")
+			}
+		}
+
+		let notesList = [
+			new Notes(200, 10),
+			new Notes(100, 5),
+			new Notes(50, 15),
+			new Notes(20, 10),
+			new Notes(10, 7),
+			new Notes(5, 10),
+		]
+
+		let bank1 = new TBankomat(notesList)
+		bank1.getWithdrawal(100)
+	</script>
+</body>
+
+</html>

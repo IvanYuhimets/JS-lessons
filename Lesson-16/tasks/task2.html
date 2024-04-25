@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 2</h1>
+	<p>
+		Створити клас TMoney для роботи з грошовими сумами. Сума повинна зберігатися у вигляді доларового
+		еквіваленту. Реалізувати методи додавання/вилучення грошової маси, вказуючи необхідну суму у гривнях, та
+		визначення курсу долара, при якому сума у гривнях збільшиться на 100. Курс долара зберігати в окремому полі.
+
+	</p>
+	<script>
+		class TMoney {
+			#dollarsAmount
+			get DollarsAmount() {
+				return this.#dollarsAmount
+			}
+			set DollarsAmount(value) {
+				if (value < 0)
+					throw new Error("вказали не коректне значення DollarsAmount")
+				this.#dollarsAmount = value
+			}
+			constructor(initialDollar, initialGrn, exchangeRate) {
+				this.DollarsAmount = initialDollar
+				this.exchangeRate = exchangeRate
+				this.DollarsAmount += initialGrn / this.exchangeRate
+			}
+			getAddSum(value) {
+				if (value / this.exchangeRate <= 0)
+					throw new Error("не коректна сума що додається")
+				this.DollarsAmount += value / this.exchangeRate
+			}
+			getSubtSum(value) {
+				if (this.DollarsAmount < value / this.exchangeRate)
+					throw new Error("такої суми на рахунку немає")
+				this.DollarsAmount -= value / this.exchangeRate
+			}
+			getIncrementGrn() {
+				if (this.DollarsAmount <= 0)
+					throw new Error("суми на рахунку не достатньо")
+				return (
+					(this.DollarsAmount * this.exchangeRate + 100) / this.DollarsAmount
+				)
+			}
+			toString() {
+				return `на рахунку ${this.DollarsAmount}$ що є еквівалентно ${this.DollarsAmount * this.exchangeRate
+					} грн`
+			}
+		}
+
+		let money1 = new TMoney(0, 20000, 39.88)
+		document.write(money1 + "<br>")
+		let course = money1.getIncrementGrn()
+		document.write(course + " курс при якому сумма збільшиться на 100грн")
+	</script>
+</body>
+
+</html>

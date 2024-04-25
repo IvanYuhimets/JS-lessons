@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 3</h1>
+	<p>
+		Задача 3. Об’єкт “Фірма” (використати члени-класи)
+	<p>▪ назва фірми;</p>
+	<p>▪ дата заснування (рік, місяць);</p>
+	<p>▪ послуги (назва послуги, вартість, термін виконання);</p>
+	<p>▪ адреси філіалів (країна, місто, вулиця, номер будинку);</p>
+	<p>▪ визначення кількості років існування фірми;</p>
+	<p>▪ виведення всіх філіалів фірми у вказаному місті;</p>
+	<p>▪ виведення на екран послуг, що можуть бути виконані за вказану суму грошей та вказаний термін часу;</p>
+
+	</p>
+	<script>
+		class Firm {
+			#dateOfEstablishment
+			get DateOfEstablishment() {
+				return this.#dateOfEstablishment
+			}
+			set DateOfEstablishment(value) {
+				if (value.length === 0) throw new Error("введено некоректне значення")
+				this.#dateOfEstablishment = value
+			}
+			constructor(name, year, services, addressesOfBranches) {
+				this.name = name
+				this.DateOfEstablishment = year
+				this.services = services
+				this.addressesOfBranches = addressesOfBranches
+			}
+			getYearFirmOld(currentYear) {
+				return currentYear - this.DateOfEstablishment
+			}
+			showFilialsOfCity(city) {
+				return this.addressesOfBranches.filter((el) => el.city === city)
+			}
+			showServicesOfMoneyAndTime(money, time) {
+				return this.services.reduce((prevServ, currServ) => {
+					if (currServ.cost <= money && currServ.time <= time) {
+						prevServ.push(currServ)
+					}
+					return prevServ
+				}, [])
+			}
+		}
+	</script>
+</body>
+
+</html>
