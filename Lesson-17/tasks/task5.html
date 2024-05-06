@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 5</h1>
+	<p>
+		5. Особиста бібліотека. Картотека домашньої бібліотеки: дані книги (автори (піб, рік народження, короткий опис),
+		назва книги, жанр, видавництво (назва, реєстраційний номер, рік засування)). Реалізувати розділи бібліотеки
+		(спеціальна література, хобі, домашнє господарство і т.д.), походження книги і наявність на даний час.
+		Організувати додавання/вилучення книг та вибір книг за назвою, за ПІБ автора, за видавництвом.
+	</p>
+	<script>
+		class Book {
+			constructor(author, title, genre, publisher) {
+				; (this.author = author),
+					(this.title = title),
+					(this.genre = genre),
+					(this.publisher = publisher)
+			}
+		}
+		class Publisher {
+			constructor(name, registrationNumber, yearFounded) {
+				; (this.name = name),
+					(this.registrationNumber = registrationNumber),
+					(this.yearFounded = yearFounded)
+			}
+		}
+		class Library {
+			constructor() {
+				; (this.books = []),
+					(this.sections = {
+						"Special literature": [],
+						Hobby: [],
+						Household: [],
+					})
+			}
+			addBook(book) {
+				this.books.push(book)
+				if (this.sections[book.genre]) {
+					this.sections[book.genre].push(book)
+				}
+			}
+			removeBook(title) {
+				this.books = this.books.filter((book) => book.title !== title)
+				for (const section in this.sections) {
+					this.sections[section] = this.sections[section].filter(
+						(book) => book.title !== title
+					)
+				}
+			}
+			findBooksTitle(title) {
+				return this.books.filter((book) => book.title === title)
+			}
+			findBookAutor(autorName) {
+				return this.books.filter((book) => book.author.name === autorName)
+			}
+			findBooksPublisher(publisherName) {
+				return this.books.filter(
+					(book) => book.publisher.name === publisherName
+				)
+			}
+		}
+
+		//=========================
+		// // Створення екземплярів видавництв
+		// let publisher1 = new Publisher("Видавництво А", "123", 1990)
+		// let publisher2 = new Publisher("Видавництво Б", "456", 1985)
+
+		// // Створення екземплярів книг
+		// let book1 = new Book("Автор1", "Книга1", "Special Literature", publisher1)
+		// let book2 = new Book("Автор2", "Книга2", "Hobbies", publisher2)
+
+		// // Створення екземпляра бібліотеки
+		// let myLibrary = new Library()
+
+		// // Додавання книг до бібліотеки
+		// myLibrary.addBook(book1)
+		// myLibrary.addBook(book2)
+
+		// // Виведення всіх книг у бібліотеці
+		// console.log(myLibrary.books)
+
+		// // Вилучення книги з бібліотеки
+		// myLibrary.removeBook("Книга1")
+
+		// // Пошук книг за назвою
+		// let foundBooksByTitle = myLibrary.findBooksTitle("Книга2")
+		// console.log(foundBooksByTitle)
+
+		// // Пошук книг за автором
+		// let foundBooksByAuthor = myLibrary.findBookAutor("Автор2")
+		// console.log(foundBooksByAuthor)
+
+		// // Пошук книг за видавництвом
+		// let foundBooksByPublisher = myLibrary.findBooksPublisher("Видавництво Б")
+		// console.log(foundBooksByPublisher)
+	</script>
+</body>
+
+</html>

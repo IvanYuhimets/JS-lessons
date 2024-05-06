@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   //1) 1.	Створити клас, що дозволяє виконувати такі операції над масивами: знаходження кількості додатних, кількості від’ємних, кількість входжень деякого числа (статичні методи)
+
+      //   class MathematicFunc {
+      //     static positiveNum(numList) {
+      //       let positiveCount = numList.reduce(
+      //         (prevSum, num) => (num > 0 ? (prevSum += 1) : prevSum),
+      //         0
+      //       )
+      //       return positiveCount
+      //     }
+
+      //     static negativeNum(numList) {
+      //       let negativeCount = numList.reduce(
+      //         (prevSum, num) => (num < 0 ? (prevSum += 1) : prevSum),
+      //         0
+      //       )
+      //       return negativeCount
+      //     }
+      //     static enteringNumber = 15
+      //     static enterNum(numList) {
+      //       let searchNum = numList.reduce(
+      //         (prevSum, num) =>
+      //           num === this.enteringNumber ? (prevSum += 1) : prevSum,
+      //         0
+      //       )
+      //       return searchNum
+      //     }
+      //     toString() {
+      //       return `${MathematicFunc.positiveCount()}- ${MathematicFunc.negativeCount()} - ${MathematicFunc.searchNum()} - <br>`
+      //     }
+      //   }
+      //   let numList = [2, 4, 5, 8, 15, -4, 0, 15, 8, 55, 13, -45, 15, -15]
+
+      //=============================================================
+      //2) 2.	Створити службове авто (водій, марка, номер).
+      // Створити клас таким чином, щоб можна було створити тільки один екземпляр цього класу.
+      //   class CompanyCar {
+      //     static companyInfo
+      //     constructor(driver, model, carNumber) {
+      //       if (CompanyCar.companyInfo) return CompanyCar.companyInfo
+      //       ;(this.driver = driver),
+      //         (this.model = model),
+      //         (this.carNumber = carNumber),
+      //         (CompanyCar.companyInfo = this)
+      //     }
+      //     toString() {
+      //       return `${this.driver}- ${this.model} - ${this.carNumber}`
+      //     }
+      //   }
+      //   const comp1 = new CompanyCar("Ivan", "Skoda", 5530)
+      //   document.write(comp1)
+      //   const comp2 = new CompanyCar("Aleks", "Audi", 7780)
+      //   document.write(comp2)
+      //=============================================================
+      //3)
+      //   class Reminder {
+      //     static activeInstance
+
+      //     constructor(message, interval) {
+      //       if (Reminder.activeInstance) {
+      //         throw new Error("Не можно створити декілька нагадувачів")
+      //       }
+      //       this.message = message
+      //       this.interval = interval
+      //       this.count = 0
+      //       Reminder.activeInstance = this
+      //       this.timerId = setInterval(() => this.remind(), interval)
+      //     }
+
+      //     remind() {
+      //       this.count++
+      //       console.log(`${this.count}: ${this.message}`)
+      //     }
+
+      //     stopTimer() {
+      //       clearInterval(this.timerId)
+      //       Reminder.activeInstance
+      //     }
+
+      //     changeMessage(newMessage) {
+      //       this.message = newMessage
+      //     }
+      //   }
+
+      //   const myReminder = new Reminder("Hello Evan", 1000)
+      //   // Зміна тексту
+      //   setTimeout(() => {
+      //     myReminder.changeMessage("Hello user")
+      //   }, 5000)
+      //   // Зупинка таймера через кількість секунд
+      //   setTimeout(() => {
+      //     myReminder.stopTimer()
+      //   }, 10000)
+      //=============================================================
+      // 4) переписати на свіжу голову і подумати
+
+      // class Manufacturer {
+      //   constructor(name, regNum) {
+      //     ;(this.name = name), (this.regNum = regNum)
+      //   }
+      // }
+      // class Product {
+      //   constructor(name, unit, quantity, manufacturer) {
+      //     ;(this.name = name),
+      //       (this.unit = unit),
+      //       (this.quantity = quantity),
+      //       (this.manufacturer = manufacturer)
+      //   }
+      // }
+      // class Warehouse {
+      //   constructor() {
+      //     this.products = []
+      //   }
+      //   registerProduct(product) {
+      //     this.products.push(product)
+      //   }
+      //   unloadProduct(productName) {
+      //     this.products = this.products.filter(
+      //       (product) => product.name !== productName
+      //     )
+      //   }
+      //   filterProductName(productName) {
+      //     return this.products.filter((product) =>
+      //       product.name.includes(productName)
+      //     )
+      //   }
+      //   filterManufacturer(manufacturerName) {
+      //     return this.products.filter((product) =>
+      //       product.manufacturer.name.includes(manufacturerName)
+      //     )
+      //   }
+      // }
+
+      // const manufacturer1 = new Manufacturer("Manufacturer 1", "123456")
+      // const manufacturer2 = new Manufacturer("Manufacturer 2", "654321")
+
+      // const product1 = new Product("Product 1", "pcs", 100, manufacturer1)
+      // const product2 = new Product("Product 2", "kg", 50, manufacturer2)
+
+      // const warehouse = new Warehouse()
+      // warehouse.registerProduct(product1)
+      // warehouse.registerProduct(product2)
+
+      // console.log(warehouse.filterProductName("product"))
+      // console.log(warehouse.filterManufacturer("manufacturer 1"))
+      //=================================================
+
+      //=============================================================
+      // рішення чат гпт
+      // class Manufacturer {
+      //   constructor(name, registrationNumber) {
+      //     this.name = name
+      //     this.registrationNumber = registrationNumber
+      //   }
+      // }
+
+      // class Product {
+      //   constructor(name, unit, quantity, manufacturer) {
+      //     this.name = name
+      //     this.unit = unit
+      //     this.quantity = quantity
+      //     this.manufacturer = manufacturer
+      //   }
+      // }
+
+      // class Warehouse {
+      //   constructor() {
+      //     this.products = []
+      //   }
+
+      //   registerProduct(product) {
+      //     this.products.push(product)
+      //   }
+
+      //   unloadProduct(productName) {
+      //     this.products = this.products.filter(
+      //       (product) => product.name !== productName
+      //     )
+      //   }
+
+      //   filterByProductName(productName) {
+      //     return this.products.filter((product) =>
+      //       product.name.toLowerCase().includes(productName.toLowerCase())
+      //     )
+      //   }
+
+      //   filterByManufacturer(manufacturerName) {
+      //     return this.products.filter((product) =>
+      //       product.manufacturer.name
+      //         .toLowerCase()
+      //         .includes(manufacturerName.toLowerCase())
+      //     )
+      //   }
+      // }
+
+      // // Example usage
+      // const manufacturer1 = new Manufacturer("Manufacturer 1", "123456")
+      // const manufacturer2 = new Manufacturer("Manufacturer 2", "654321")
+
+      // const product1 = new Product("Product 1", "pcs", 100, manufacturer1)
+      // const product2 = new Product("Product 2", "kg", 50, manufacturer2)
+
+      // const warehouse = new Warehouse()
+      // warehouse.registerProduct(product1)
+      // warehouse.registerProduct(product2)
+
+      // console.log(warehouse.filterByProductName("product")) // Should return both products
+      // console.log(warehouse.filterByManufacturer("manufacturer 1")) // Should return product1
+      //====================================================
+      // 5)
+      // class Book {
+      //   constructor(author, title, genre, publisher) {
+      //     ;(this.author = author),
+      //       (this.title = title),
+      //       (this.genre = genre),
+      //       (this.publisher = publisher)
+      //   }
+      // }
+      // class Publisher {
+      //   constructor(name, registrationNumber, yearFounded) {
+      //     ;(this.name = name),
+      //       (this.registrationNumber = registrationNumber),
+      //       (this.yearFounded = yearFounded)
+      //   }
+      // }
+      // class Library {
+      //   constructor() {
+      //     ;(this.books = []),
+      //       (this.sections = {
+      //         "Special literature": [],
+      //         Hobby: [],
+      //         Household: [],
+      //       })
+      //   }
+      //   addBook(book) {
+      //     this.books.push(book)
+      //     if (this.sections[book.genre]) {
+      //       this.sections[book.genre].push(book)
+      //     }
+      //   }
+      //   removeBook(title) {
+      //     this.books = this.books.filter((book) => book.title !== title)
+      //     for (const section in this.sections) {
+      //       this.sections[section] = this.sections[section].filter(
+      //         (book) => book.title !== title
+      //       )
+      //     }
+      //   }
+      //   findBooksTitle(title) {
+      //     return this.books.filter((book) => book.title === title)
+      //   }
+      //   findBookAutor(autorName) {
+      //     return this.books.filter((book) => book.author.name === autorName)
+      //   }
+      //   findBooksPublisher(publisherName) {
+      //     return this.books.filter(
+      //       (book) => book.publisher.name === publisherName
+      //     )
+      //   }
+      // }
+
+      //=========================
+      // // Створення екземплярів видавництв
+      // let publisher1 = new Publisher("Видавництво А", "123", 1990)
+      // let publisher2 = new Publisher("Видавництво Б", "456", 1985)
+
+      // // Створення екземплярів книг
+      // let book1 = new Book("Автор1", "Книга1", "Special Literature", publisher1)
+      // let book2 = new Book("Автор2", "Книга2", "Hobbies", publisher2)
+
+      // // Створення екземпляра бібліотеки
+      // let myLibrary = new Library()
+
+      // // Додавання книг до бібліотеки
+      // myLibrary.addBook(book1)
+      // myLibrary.addBook(book2)
+
+      // // Виведення всіх книг у бібліотеці
+      // console.log(myLibrary.books)
+
+      // // Вилучення книги з бібліотеки
+      // myLibrary.removeBook("Книга1")
+
+      // // Пошук книг за назвою
+      // let foundBooksByTitle = myLibrary.findBooksTitle("Книга2")
+      // console.log(foundBooksByTitle)
+
+      // // Пошук книг за автором
+      // let foundBooksByAuthor = myLibrary.findBookAutor("Автор2")
+      // console.log(foundBooksByAuthor)
+
+      // // Пошук книг за видавництвом
+      // let foundBooksByPublisher = myLibrary.findBooksPublisher("Видавництво Б")
+      // console.log(foundBooksByPublisher)
+      //===============================================
+    </script>
+  </body>
+</html>

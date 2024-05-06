@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 1</h1>
+	<p>
+		<!DOCTYPE html>
+		<html lang="en">
+
+		<head>
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<title>Document</title>
+		</head>
+
+		<body>
+			<h1>Задача 4</h1>
+			<p>
+				1. Створити клас, що дозволяє виконувати такі операції над масивами: знаходження кількості додатних,
+				кількості від’ємних, кількість входжень деякого числа (статичні методи)
+
+			</p>
+			<script>
+				class MathematicFunc {
+					static positiveNum(numList) {
+						let positiveCount = numList.reduce(
+							(prevSum, num) => (num > 0 ? (prevSum += 1) : prevSum),
+							0
+						)
+						return positiveCount
+					}
+
+					static negativeNum(numList) {
+						let negativeCount = numList.reduce(
+							(prevSum, num) => (num < 0 ? (prevSum += 1) : prevSum),
+							0
+						)
+						return negativeCount
+					}
+					static enteringNumber = 15
+					static enterNum(numList) {
+						let searchNum = numList.reduce(
+							(prevSum, num) =>
+								num === this.enteringNumber ? (prevSum += 1) : prevSum,
+							0
+						)
+						return searchNum
+					}
+					toString() {
+						return `${MathematicFunc.positiveCount()}- ${MathematicFunc.negativeCount()} - ${MathematicFunc.searchNum()} - <br>`
+					}
+				}
+				let numList = [2, 4, 5, 8, 15, -4, 0, 15, 8, 55, 13, -45, 15, -15]
+			</script>
+		</body>
+
+		</html>
