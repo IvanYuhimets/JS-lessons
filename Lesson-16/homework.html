@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //задача 1=================================
+      //   class TDate {
+      //     #day
+
+      //     get Day() {
+      //       return this.#day
+      //     }
+      //     set Day(value) {
+      //       if (value <= 0) throw new Error("значення не коректне")
+      //       this.#day = value
+      //     }
+      //     constructor(initialDay, initialMonth, InitialYear) {
+      //       this.Day = initialDay
+      //       this.month = initialMonth
+      //       this.year = InitialYear
+      //     }
+      //     correctDate() {
+      //       if (this.Day >= 0) {
+      //         const addMonth = Math.floor(this.Day / 30)
+      //         this.Day = this.Day % 30
+      //         this.month += addMonth
+      //       } else {
+      //         this.Day = 29
+      //         this.month--
+      //         if (this.month < 0) {
+      //           this.month = 11
+      //           this.year--
+      //         }
+      //       }
+      //       if (this.month >= 12) {
+      //         const addYear = Math.floor(this.month / 12)
+      //         this.month = this.month % 12
+      //         this.year += addYear
+      //       }
+      //     }
+      //     //========= days
+
+      //     increaceDays(value) {
+      //       if (value > 0) throw new Error("не коректне значення дня")
+
+      //       this.Day += value
+      //       this.correctDate()
+      //     }
+      //     decreaceDays(value) {
+      //       if (value >= 0) throw new Error("не коректне значення дня")
+
+      //       this.Day -= value
+      //       this.correctDate()
+      //     }
+      //     //========= month
+
+      //     increaceMonth(value) {
+      //       if (value <= 0) throw new Error("не коректне значення місяця")
+      //       this.month += value
+      //       this.correctDate()
+      //     }
+      //     decreaceMonth(value) {
+      //       if (value <= 0) throw new Error("не коректне значення місяця")
+      //       this.month -= value
+      //       this.correctDate()
+      //     }
+      //     //========= years
+
+      //     increaceYears(value) {
+      //       if (value <= 0) throw new Error("не коректне значення року")
+      //       this.year += value
+      //       this.correctDate()
+      //     }
+      //     decreaceYears(value) {
+      //       if (value <= 0) throw new Error("не коректне значення року")
+      //       this.year -= value
+      //       this.correctDate()
+      //     }
+      //     toString() {
+      //       return `${this.Day} - ${this.month} - ${this.year}`
+      //     }
+      //   }
+      //   const date1 = new TDate(20, 10, 1988)
+      //   date1.increaceMonth(3)
+      //   document.write(date1)
+      //задача 2=================================
+      //   class TMoney {
+      //     #dollarsAmount
+      //     get DollarsAmount() {
+      //       return this.#dollarsAmount
+      //     }
+      //     set DollarsAmount(value) {
+      //       if (value < 0)
+      //         throw new Error("вказали не коректне значення DollarsAmount")
+      //       this.#dollarsAmount = value
+      //     }
+      //     constructor(initialDollar, initialGrn, exchangeRate) {
+      //       this.DollarsAmount = initialDollar
+      //       this.exchangeRate = exchangeRate
+      //       this.DollarsAmount += initialGrn / this.exchangeRate
+      //     }
+      //     getAddSum(value) {
+      //       if (value / this.exchangeRate <= 0)
+      //         throw new Error("не коректна сума що додається")
+      //       this.DollarsAmount += value / this.exchangeRate
+      //     }
+      //     getSubtSum(value) {
+      //       if (this.DollarsAmount < value / this.exchangeRate)
+      //         throw new Error("такої суми на рахунку немає")
+      //       this.DollarsAmount -= value / this.exchangeRate
+      //     }
+      //     getIncrementGrn() {
+      //       if (this.DollarsAmount <= 0)
+      //         throw new Error("суми на рахунку не достатньо")
+      //       return (
+      //         (this.DollarsAmount * this.exchangeRate + 100) / this.DollarsAmount
+      //       )
+      //     }
+      //     toString() {
+      //       return `на рахунку ${this.DollarsAmount}$ що є еквівалентно ${
+      //         this.DollarsAmount * this.exchangeRate
+      //       } грн`
+      //     }
+      //   }
+
+      //   let money1 = new TMoney(0, 20000, 39.88)
+      //   document.write(money1 + "<br>")
+      //   let course = money1.getIncrementGrn()
+      //   document.write(course + " курс при якому сумма збільшиться на 100грн")
+      //
+
+      // задача 3 ================================================
+      //   class Firm {
+      //     #dateOfEstablishment
+      //     get DateOfEstablishment() {
+      //       return this.#dateOfEstablishment
+      //     }
+      //     set DateOfEstablishment(value) {
+      //       if (value.length === 0) throw new Error("введено некоректне значення")
+      //       this.#dateOfEstablishment = value
+      //     }
+      //     constructor(name, year, services, addressesOfBranches) {
+      //       this.name = name
+      //       this.DateOfEstablishment = year
+      //       this.services = services
+      //       this.addressesOfBranches = addressesOfBranches
+      //     }
+      //     getYearFirmOld(currentYear) {
+      //       return currentYear - this.DateOfEstablishment
+      //     }
+      //     showFilialsOfCity(city) {
+      //       return this.addressesOfBranches.filter((el) => el.city === city)
+      //     }
+      //     showServicesOfMoneyAndTime(money, time) {
+      //       return this.services.reduce((prevServ, currServ) => {
+      //         if (currServ.cost <= money && currServ.time <= time) {
+      //           prevServ.push(currServ)
+      //         }
+      //         return prevServ
+      //       }, [])
+      //     }
+      //   }
+
+      // задача 4 ================================================
+      class Notes {
+        constructor(initialNoteValue, initialNoteNumber) {
+          this.value = initialNoteValue
+          this.number = initialNoteNumber
+        }
+        getSumm() {
+          return this.value * this.number
+        }
+        toString() {
+          return `${this.value} - ${this.number}`
+        }
+      }
+      class TBankomat {
+        constructor(notesList) {
+          this.notesList = notesList
+        }
+        getMinSum() {
+          let minNote = this.notesList.reduce(
+            (prevNoteVal, note) =>
+              note.number > 0 && note.value < prevNoteVal
+                ? note.value
+                : prevNoteVal,
+            Infinity
+          )
+          return isFinite(minNote) ? minNote : 0
+        }
+        getMaxSum() {
+          let maxSum = this.notesList.reduce(
+            (prevSum, note) => prevSum + note.getSumm,
+            0
+          )
+          return maxSum
+        }
+        // метод перевірки чи можемо видаи суму грошей
+        getPossibleNotesList(userMoney) {
+          let possibleNotes = []
+          for (let i = 0; i < this.notesList.length && userMoney > 0; i++) {
+            let note = this.notesList[i]
+            if (userMoney >= note.value && note.number > 0) {
+              let notesNum = Math.floor(userMoney / note.value)
+              let notesToGive = Math.min(notesNum, note.number)
+              possibleNotes.push({
+                note,
+                notesToGive,
+              })
+              userMoney -= notesToGive * note.value
+            }
+          }
+          if (userMoney > 0) return false
+          return possibleNotes
+        }
+        // метод зняття грошей
+        getWithdrawal(userMoney) {
+          let withdrawal = this.getPossibleNotesList(userMoney)
+          if (withdrawal) {
+            for (const { note, notesToGive } of withdrawal) {
+              document.write(`${note.value} - ${notesToGive} <br>`)
+              note.number -= notesToGive
+            }
+            document.write("заберіть ваші гроші")
+          } else document.write("такої суми немає ")
+        }
+      }
+
+      let notesList = [
+        new Notes(200, 10),
+        new Notes(100, 5),
+        new Notes(50, 15),
+        new Notes(20, 10),
+        new Notes(10, 7),
+        new Notes(5, 10),
+      ]
+
+      let bank1 = new TBankomat(notesList)
+      bank1.getWithdrawal(100)
+      // document.write(bank1)
+    </script>
+  </body>
+</html>
