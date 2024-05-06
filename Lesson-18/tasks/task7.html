@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+</head>
+
+<body>
+
+	<body>
+		<!-- Етап 1 -->
+		<div>
+			<h3>Етап 1</h3>
+			<div>
+				<label>
+					Транспорт:
+					<select id="transportType1">
+						<option value="auto">Авто</option>
+						<option value="bus">Автобус</option>
+						<option value="fly">Літак</option>
+					</select>
+				</label>
+			</div>
+			<div>
+				<label><input type="checkbox" name="food1" value="breakfast" />Сніданок</label>
+				<label><input type="checkbox" name="food1" value="lunch" />Обід</label>
+				<label><input type="checkbox" name="food1" value="dinner" />Вечеря</label>
+			</div>
+			<div>
+				<label><input type="radio" name="guide1" value="0" />Гід 1</label>
+				<label><input type="radio" name="guide1" value="1" />Гід 2</label>
+				<label><input type="radio" name="guide1" value="2" />Гід 3</label>
+			</div>
+		</div>
+
+		<!-- Етап 2 -->
+		<div>
+			<h3>Етап 2</h3>
+			<div>
+				<label>
+					Транспорт:
+					<select id="transportType2">
+						<option value="auto">Авто</option>
+						<option value="bus">Автобус</option>
+						<option value="fly">Літак</option>
+					</select>
+				</label>
+			</div>
+			<div>
+				<label><input type="checkbox" name="food2" value="breakfast" />Сніданок</label>
+				<label><input type="checkbox" name="food2" value="lunch" />Обід</label>
+				<label><input type="checkbox" name="food2" value="dinner" />Вечеря</label>
+			</div>
+			<div>
+				<label><input type="radio" name="guide2" value="0" />Гід 1</label>
+				<label><input type="radio" name="guide2" value="1" />Гід 2</label>
+				<label><input type="radio" name="guide2" value="2" />Гід 3</label>
+			</div>
+		</div>
+
+		<!-- Етап 3 -->
+		<div>
+			<h3>Етап 3</h3>
+			<div>
+				<label>
+					Транспорт:
+					<select id="transportType3">
+						<option value="auto">Авто</option>
+						<option value="bus">Автобус</option>
+						<option value="fly">Літак</option>
+					</select>
+				</label>
+			</div>
+			<div>
+				<label><input type="checkbox" name="food3" value="breakfast" />Сніданок</label>
+				<label><input type="checkbox" name="food3" value="lunch" />Обід</label>
+				<label><input type="checkbox" name="food3" value="dinner" />Вечеря</label>
+			</div>
+			<div>
+				<label><input type="radio" name="guide3" value="0" />Гід 1</label>
+				<label><input type="radio" name="guide3" value="1" />Гід 2</label>
+				<label><input type="radio" name="guide3" value="2" />Гід 3</label>
+			</div>
+		</div>
+
+		<div>
+			<button id="calculate">Загальна вартість</button>
+		</div>
+		<div>Загальна вартість: <span id="result"></span></div>
+
+		<script>
+			function getTotalPrice() {
+				const transportPrices = {
+					auto: 300,
+					bus: 100,
+					fly: 500,
+				}
+				const foodPrices = {
+					breakfast: 50,
+					lunch: 70,
+					dinner: 80,
+				}
+				const guidePrices = [200, 250, 300]
+
+				let totalSum = 0
+
+				// Підрахунок для Етапу 1
+				totalSum +=
+					transportPrices[document.getElementById("transportType1").value] +
+					[
+						...document.querySelectorAll("input[name='food1']:checked"),
+					].reduce(
+						(prevSum, element) => prevSum + foodPrices[element.value],
+						0
+					) +
+					guidePrices[
+					parseInt(
+						document.querySelector("input[name='guide1']:checked").value
+					)
+					]
+
+				// Підрахунок для Етапу 2
+				totalSum +=
+					transportPrices[document.getElementById("transportType2").value] +
+					[
+						...document.querySelectorAll("input[name='food2']:checked"),
+					].reduce(
+						(prevSum, element) => prevSum + foodPrices[element.value],
+						0
+					) +
+					guidePrices[
+					parseInt(
+						document.querySelector("input[name='guide2']:checked").value
+					)
+					]
+
+				// Підрахунок для Етапу 3
+				totalSum +=
+					transportPrices[document.getElementById("transportType3").value] +
+					[
+						...document.querySelectorAll("input[name='food3']:checked"),
+					].reduce(
+						(prevSum, element) => prevSum + foodPrices[element.value],
+						0
+					) +
+					guidePrices[
+					parseInt(
+						document.querySelector("input[name='guide3']:checked").value
+					)
+					]
+
+				document.getElementById("result").innerText = totalSum
+			}
+
+			window.onload = function () {
+				document.getElementById("calculate").onclick = getTotalPrice
+			}
+		</script>
+	</body>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 2</h1>
+	<p>
+		2. Зробити конвертер валют (курси валют – константи у скрипті)
+	</p>
+
+	<label>
+		Сума в гривнях
+		<input type="number" id="grn" value="0" />
+	</label>
+	<div id="container">
+		<button onclick="convertToDollar()">Конвертувати</button>
+	</div>
+	<hr />
+	<div>
+		<label>
+			Сума в доларах
+			<input type="number" id="resDollar" placeholder="Result" />
+		</label>
+	</div>
+	<div>
+		<label>
+			Сума в Евро
+			<input type="number" id="resEuro" placeholder="Result" />
+		</label>
+	</div>
+	<script>
+		const dollarRate = 39
+		const euroRate = 42
+		function convertToDollar() {
+			const grn = parseFloat(document.getElementById("grn").value)
+			const dollarValue = grn / dollarRate
+			const euroValue = grn / euroRate
+			document.getElementById("resEuro").value = euroValue.toFixed(2)
+			document.getElementById("resDollar").value = dollarValue.toFixed(2)
+		}
+
+		window.onload = function () {
+			// document.querySelector('#grn').oninput = convert
+			document.querySelector("#grn").onchange = convertToDollar
+		}
+	</script>
+</body>
+
+</html>

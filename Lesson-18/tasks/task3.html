@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 3</h1>
+	<p>
+		Користувач задає рік народження. Визначити кількість років користувача
+	</p>
+	<label>
+		Введіть ваш рік народження
+		<input type="number" id="userAnswer" value="0" />
+	</label>
+	<div id="container">
+		<button onclick="getYearsUser()">Обчислити</button>
+	</div>
+	<hr />
+	<div>
+		<label>
+			Ваш вік =
+			<input type="number" id="years" placeholder="Result" />
+		</label>
+	</div>
+
+	<script>
+		function getYearsUser() {
+			const currentYear = 2024
+			const userYear = parseInt(document.getElementById("userAnswer").value)
+			if (userYear <= 0) throw new Error("Рік не може бути відємним")
+			const res = currentYear - userYear
+			document.getElementById("years").value = res
+		}
+	</script>
+</body>
+
+</html>
