@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		img {
+			border: 2px solid transparent;
+
+
+		}
+
+		.imgOnFocus {
+			border: 2px solid green;
+
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача 5</h1>
+	<p>
+		Відображаємо картки товарів, які користувач може вибирати. Вибраний товар має зелену рамку (при кліку робити
+		toogle з класом вибраного елемента)
+	</p>
+	<div class="container-image">
+
+		<img src="../img/img-one.png" alt="one">
+		<img src="../img/img-two.png" alt="two">
+		<img src="../img/img-three.png" alt="three">
+		<img src="../img/img-four.png" alt="four">
+		<img src="../img/img-five.png" alt="five">
+	</div>
+
+	<hr>
+	<script>
+		window.onload = function () {
+			document.querySelector('.container-image').onclick = getColorBorder
+		}
+		function getColorBorder(event) {
+			const thisEl = event.target
+			if (thisEl.tagName === 'IMG') {
+				thisEl.classList.toggle('imgOnFocus')
+			}
+		}
+	</script>
+</body>
+
+</html>

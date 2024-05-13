@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 2</h1>
+	<p>
+		Дано 5 елементів input. При введенні значення у якийсь із них необхідно автоматично заповнювати інші (усі
+		попередні у спадному порядку(кожен попередній має значення на 1 менше за наступний), усі наступні на 1 більше
+		(кожен наступне на 1 більше за попереднього)
+	</p>
+
+	<div>
+		<div>
+			<label>
+				Value 1
+				<input type="number" id="input1" />
+			</label>
+		</div>
+		<div>
+			<label>
+				Value 2
+				<input type="number" id="input2" />
+			</label>
+		</div>
+		<div>
+			<label>
+				Value 3
+				<input type="number" id="input3" />
+			</label>
+		</div>
+		<div>
+			<label>
+				Value 4
+				<input type="number" id="input4" />
+			</label>
+		</div>
+		<div>
+			<label>
+				Value 5
+				<input type="number" id="input5" />
+			</label>
+		</div>
+	</div>
+	<script>
+		const inputs = document.querySelectorAll('input')
+		function changeValues(input, value) {
+			let index = Array.from(inputs).indexOf(input)
+
+			while (index > 0) {
+				index--
+				inputs[index].value = value - 1
+				value--
+			}
+			value = parseInt(input.value) + 1
+			index = Array.from(inputs).indexOf(input)
+			while (index < inputs.length - 1) {
+				index++
+				inputs[index].value = value
+				value++
+			}
+		}
+		inputs.forEach((input) => {
+			input.addEventListener('input', () => {
+				let value = parseInt(input.value)
+				if (!isNaN(value)) {
+					changeValues(input, value)
+				}
+			})
+		})
+	</script>
+</body>
+
+</html>
