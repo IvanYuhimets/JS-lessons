@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		#container {
+			display: flex;
+			gap: 50px;
+			margin-left: 20px;
+		}
+
+		h1 {
+			font-size: 22px;
+			font-weight: 600;
+			text-align: center;
+		}
+
+		#candidates {
+			cursor: pointer;
+			min-width: 150px;
+			border: 1px solid green;
+
+
+			div::before {
+				cursor: pointer;
+				content: '\2192';
+				color: green;
+				font-size: 24px;
+				padding: 10px
+			}
+		}
+
+		#selected {
+			cursor: pointer;
+			min-width: 150px;
+			border: 1px solid red;
+
+
+			div::after {
+				cursor: pointer;
+				content: '\2190';
+				color: red;
+				font-size: 24px;
+				padding: 10px
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача 6</h1>
+	<p>
+		Дано список спортсменів. Потрібно сформувати список тих, які будуть брати участь у змаганні. При цьому є два
+		стовпці. В одному відображені всі спортсмени, в іншому – список тих, хто був вибраний. При натисканні на зелену
+		стрілку спортсмен переміщається у список для змагань. При натисканні на червону стрілку спортсмен переміщається у
+		загальний список.
+	</p>
+	<div id="container">
+		<div>
+			<h1>All list</h1>
+			<div id="candidates">
+				<div>John Depp</div>
+				<div>Sara Wik</div>
+				<div>Den Miro</div>
+				<div>Alan Woo</div>
+			</div>
+		</div>
+		<div>
+			<h1>Selected for battle</h1>
+			<div id="selected">
+				<div>Olga Sich</div>
+				<div>Ivan Hal</div>
+			</div>
+		</div>
+	</div>
+
+
+	<hr>
+	<script>
+		container.onclick = function (event) {
+			const target = event.target
+			if (target.closest('#candidates')) {
+				selected.append(target)
+			} else if (target.closest('#selected')) {
+				candidates.append(target)
+			}
+		}
+
+
+	</script>
+
+
+</body>
+
+</html>

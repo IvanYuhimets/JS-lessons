@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		div {
+			padding: 25px 30px;
+			cursor: pointer;
+			font-size: 24px;
+			font-weight: 700;
+			max-width: 300px;
+			text-align: center;
+
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Задача 3</h1>
+
+	<p>
+		Дано 5 елементів input. При введенні значення у якийсь із них необхідно автоматично заповнювати інші (усі
+		попередні у спадному порядку(кожен попередній має значення на 1 менше за наступний), усі наступні на 1 більше
+		(кожен наступне на 1 більше за попереднього)
+	</p>
+
+	<div class="container"></div>
+	<hr>
+	<button id="colored">Add color</button>
+
+	<script>
+		function getRandNUm(min = 1, max = 100) {
+			return min + Math.floor(Math.random() * (max - min))
+		}
+		function getRandCountLi(min = 1, max = 10) {
+			return min + Math.floor(Math.random() * (max - min))
+
+		}
+
+		function createUlEl() {
+			const ulEl = document.createElement('ol')
+			const countLiEl = getRandCountLi()
+			for (let i = 0; i < countLiEl; i++) {
+				const liEl = document.createElement('li')
+				liEl.innerText = getRandNUm()
+				ulEl.append(liEl)
+			}
+			return ulEl
+		}
+		function getColor() {
+			const ulElements = document.getElementsByTagName('ol')
+			for (const el of ulElements) {
+				if (el.childElementCount % 2 === 0) {
+					el.style.backgroundColor = 'green'
+				} else {
+					el.style.backgroundColor = 'red'
+
+				}
+			}
+		}
+		window.onload = function () {
+			const divContent = document.querySelector('.container')
+			for (let j = 1; j <= 5; j++) {
+				divContent.append(createUlEl())
+			}
+			document.getElementById('colored').onclick = getColor
+		}
+	</script>
+</body>
+
+</html>
