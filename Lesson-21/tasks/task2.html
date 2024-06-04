@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Задача 2</h1>
+	<p>
+		Створити клас Bank, у якому зберігається масив клієнтів. Виконати такі операції
+	<p>● Вивести всіх простих клієнтів;</p>
+	<p>● Вивести всіх клієнтів GoldenClient;</p>
+	<p>● Знайти сумарну кількість грошей на рахунку</p>
+
+
+	</p>
+
+
+	<script>
+		class Client {
+			constructor(name, balance) {
+				this.name = name;
+				this.balance = balance;
+				this.type = "simple";
+			}
+		}
+
+		class GoldenClient extends Client {
+			constructor(name, balance, perks) {
+				super(name, balance);
+				this.perks = perks;
+				this.type = "golden";
+			}
+		}
+
+		class Bank {
+			constructor() {
+				this.clients = [];
+			}
+
+			addClient(client) {
+				try {
+					if (!client || !client.type) {
+						throw new Error("Invalid client");
+					}
+					this.clients.push(client);
+				} catch (error) {
+					console.error("Помилка додавання клієнта:", error.message);
+				}
+			}
+
+			getSimpleClients() {
+				try {
+					return this.clients.filter((client) => client.type === "simple");
+				} catch (error) {
+					console.error("Помилка отримання Simple Clients:", error.message);
+					return [];
+				}
+			}
+
+			getGoldenClients() {
+				try {
+					return this.clients.filter((client) => client.type === "golden");
+				} catch (error) {
+					console.error("Помилка отримання Golden Clients:", error.message);
+					return [];
+				}
+			}
+
+			getTotalBalance() {
+				try {
+					return this.clients.reduce(
+						(total, client) => total + client.balance,
+						0
+					);
+				} catch (error) {
+					console.error("Помилка підрахунку загального балансу:", error.message);
+					return 0;
+				}
+			}
+		}
+
+		const bank1 = new Bank();
+
+		try {
+			bank1.addClient(new Client("Ana", 1000));
+			bank1.addClient(new GoldenClient("John", 5000, ["немає пені за користування банкоматом"]));
+			bank1.addClient(new Client("Arnold", 2000));
+			bank1.addClient(new GoldenClient("Sabrina", 10000, ["пріоритетний клієнт"]));
+		} catch (error) {
+			console.error("Помилка додавання клієнта:", error.message);
+		}
+
+		// Вивести всіх простих клієнтів
+		console.log("Прості клієнти:", bank1.getSimpleClients());
+
+		// Вивести всіх клієнтів GoldenClient
+		console.log("Golden клієнти:", bank1.getGoldenClients());
+
+		// Знайти сумарну кількість грошей на рахунку
+		console.log("Сумарний баланс:", bank1.getTotalBalance());
+	</script>
+</body>
+
+</html>

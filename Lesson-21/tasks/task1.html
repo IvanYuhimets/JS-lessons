@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+
+</head>
+
+
+<h1>Задача №1</h1>
+
+
+<body>
+	<h1>Задача</h1>
+
+	<p>Створити клас Client
+	<p>Властивості ID</p>
+	<p>ПІБ</p>
+	<p>Кількість грошей на рахунку</p>
+	<p>Методи Додавання грошей</p>
+	<p>Зняття грошей</p>
+	<p>ToString</p>
+	На основі цього класу створити клас GoldenClient
+	<p>Властивості ID</p>
+	<p>ПІБ</p>
+	<p>Кількість грошей на рахунку</p>
+	<p>Ліміт кредитних коштів</p>
+	<p>Відсоток за використання кредитних коштів</p>
+	<p>Методи Додавання грошей</p>
+	<p>Зняття грошей</p>
+	<p>Визначення пені за використання кредитних коштів</p>
+	<p>ToString</p>
+
+	</p>
+
+
+
+	<script>
+		class Client {
+			constructor(ID, fullName, balance) {
+				; (this.ID = ID), (this.fullName = fullName), (this.balance = balance)
+			}
+
+			addMoney(value) {
+				if (value > 0) this.balance += value
+				return this.balance
+			}
+			withdrawMoney(value) {
+				if (value > 0 && this.balance > value) this.balance -= value
+				return this.balance
+			}
+			toString() {
+				return `${this.fullName} - ${this.balance}`
+			}
+		}
+
+		class GoldenClient extends Client {
+			constructor(ID, fullName, balance, creditLimit, creditInterestRate) {
+				super(ID, fullName, balance)
+				this.creditLimit = creditLimit
+				this.creditInterestRate = creditInterestRate
+			}
+
+			withdrawMoney(value) {
+				if (value > 0) {
+					if (this.balance >= value) {
+						this.balance -= value
+					} else if (this.balance + this.creditLimit >= value) {
+						let creditUsed = value - this.balance
+						this.balance = 0
+						this.creditLimit -= creditUsed
+					}
+				}
+				return this.balance
+			}
+
+			calculatePenalty() {
+				let creditUsed = this.creditLimit
+				return creditUsed * (this.creditInterestRate / 100)
+			}
+
+			toString() {
+				return `${this.fullName} - ${this.balance} (Credit Limit: ${this.creditLimit}, Interest Rate: ${this.creditInterestRate}%)`
+			}
+		}
+
+
+		const goldenClient1 = new GoldenClient(2, "Петро Петров", 2000, 500, 10)
+
+
+		console.log(goldenClient1.toString())
+		goldenClient1.addMoney(300)
+		console.log(goldenClient1.toString())
+		goldenClient1.withdrawMoney(2500)
+		console.log(goldenClient1.toString())
+		console.log(`Пеня: ${goldenClient1.calculatePenalty()}`) 
+	</script>
+</body>
+
+</html>

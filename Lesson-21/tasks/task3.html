@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		#container {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			width: 100%;
+			height: 100vh;
+			box-sizing: border-box;
+			padding: 10px;
+			position: relative;
+		}
+
+		img {
+			min-width: 150px;
+			position: absolute;
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1>Задача 3</h1>
+
+	<p>
+	<p>
+		3. Розробити Класи
+		House
+		--- властивості ---
+		● Координата Х
+		● Координата У
+		● шлях до зображення
+		● інтервал оновлення
+		--- методи ---
+		● генерування елемента розмітки
+		● оновлення через вказаний інтервал (збільшення або зменшення масштабу (об’єкт не рухається))
+	</p>
+	<p>
+		Dog
+		--- властивості ---
+		● Координата Х
+		● Координата У
+		● шлях до зображення
+		● інтервал оновлення
+		--- методи ---
+		● генерування елемента розмітки
+		● оновлення через вказаний інтервал (випадкове зміщення по горизонталі (зміна координати Х))
+	</p>
+	<p>
+		Bird
+		--- властивості ---
+		● Координата Х
+		● Координата У
+		● шлях до зображення
+		● інтервал оновлення
+		--- методи ---
+		● генерування елемента розмітки
+		● оновлення через вказаний інтервал (випадкове переміщення у довільному напрямку)
+	</p>
+
+
+	</p>
+	<div id="container"></div>
+	<script>
+
+		class Entity {
+			constructor(initialX, y, imgPath, updateInterval) {
+				this.x = initialX;
+				this.initialX = initialX;
+				this.y = y;
+				this.imgPath = imgPath;
+				this.updateInterval = updateInterval;
+				this.element = null;
+			}
+
+			generateElement() {
+				this.element = document.createElement("img");
+				this.element.src = this.imgPath;
+				this.updatePosition();
+				document.getElementById("container").appendChild(this.element);
+			}
+
+			updatePosition() {
+				if (this.element) {
+					this.element.style.left = `${this.x}px`;
+					this.element.style.top = `${this.y}px`;
+				}
+			}
+
+			startUpdating() {
+				setInterval(() => this.update(), this.updateInterval);
+			}
+
+			update() {
+			}
+		}
+
+		class House extends Entity {
+			update() {
+				let scale = Math.random() * 0.5 + 0.75;
+				this.element.style.transform = `scale(${scale})`;
+			}
+		}
+
+		class Dog extends Entity {
+			update() {
+				this.x += Math.random() * 20 - 10;
+				this.updatePosition();
+			}
+		}
+
+		class Bird extends Entity {
+			update() {
+				this.x += Math.random() * 20 - 10;
+				this.y += Math.random() * 20 - 10;
+				this.updatePosition();
+			}
+		}
+
+		// Create instances of the classes
+		const house = new House(100, 100, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaHipKtezpf42D6JuG_N4tQa1gsyyUbe5stw&s", 1000);
+		const dog = new Dog(650, 100, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZ2gEjuDyUKDWknwG6Byb5HX-hyo_7-SEuPQ&s", 500);
+		const bird = new Bird(1080, 100, "data:image/jpeg;base64,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", 500)
+
+		house.generateElement()
+		house.startUpdating()
+
+		dog.generateElement()
+		dog.startUpdating()
+
+		bird.generateElement()
+		bird.startUpdating() 
+	</script>
+</body>
+
+</html>

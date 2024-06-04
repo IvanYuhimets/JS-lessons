@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+</head>
+
+<body>
+	<h1>Задача 4</h1>
+	<p>
+		Користувач задає місяць навчання учня (перевіряти чи є числом, чи від 1 до 12, чи не канікули) та оцінку
+		(перевіряти чи є числом, чи від 1 до 100). Вивести чи зможе він виправити оцінку (якщо оцінка погана і це не
+		останній місяць у семестрі) . Обробку усіх помилок зробити з використанням відповідних класів.
+
+	</p>
+
+	<script>
+		class Student {
+
+			constructor(month, grade) {
+
+				this.month = month
+				this.grade = grade
+			}
+
+			static validateMonth(month) {
+
+				if (
+					typeof month !== "number" ||
+					isNaN(month) ||
+					month < 1 ||
+					month > 12 ||
+					[6, 7, 8].includes(month)
+				) {
+					throw new Error("Некоректний місяць: " + month)
+				}
+				return true
+			}
+
+			static validateGrade(grade) {
+
+				if (
+					typeof grade !== "number" ||
+					isNaN(grade) ||
+					grade < 1 ||
+					grade > 100
+				) {
+					throw new Error("Некоректна оцінка: " + grade)
+				}
+				return true
+			}
+
+			canImproveGrade() {
+
+				const badGrade = this.grade < 50
+				const notLastMonth = this.month % 6 !== 0
+				return badGrade && notLastMonth
+			}
+		}
+
+		function checkStudent(month, grade) {
+
+			try {
+
+				Student.validateMonth(month)
+
+
+				Student.validateGrade(grade)
+
+
+				const student = new Student(month, grade)
+
+
+				if (student.canImproveGrade()) {
+					console.log("Студент може виправити")
+				} else {
+					console.log("Студент не може виправити")
+				}
+			} catch (error) {
+
+				console.error(error.message)
+			}
+		}
+
+
+		checkStudent(5, 45)
+		checkStudent(6, 45)
+		checkStudent(12, 45)
+		checkStudent(4, 101) 
+	</script>
+</body>
+
+</html>
